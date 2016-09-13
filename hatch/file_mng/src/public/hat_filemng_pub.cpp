@@ -128,6 +128,26 @@ ssize_t safe_write(int fd, const void *buf, size_t count)
 	return 0;
 }
 
+
+int hat_is_file_exit(const char *fileName)
+{
+	if(NULL == fileName)
+		return -1;
+	if(0 == access(fileName, F_OK))
+		return 0;
+	return -1;
+}
+
+
+int hat_is_dir(const char *path)
+{
+	struct stat info;
+	stat(path, &info);
+	if(S_ISDIR(info.st_mode))
+	    return 1;
+	return 0;
+}
+
 #endif
 
 
