@@ -1,0 +1,5 @@
+[PRO][00000EFC] 2012-07-08 00:38:38 Log system is running now. [79][CHatchApp::hatchInitialize][hatchWinApp.cpp]
+[PRO][00000EFC] 2012-07-08 00:38:38 Initialize global var successed. [88][CHatchApp::hatchInitialize][hatchWinApp.cpp]
+[PRO][00000EFC] 2012-07-08 00:38:38 Thread pool is running now. [98][CHatchApp::hatchInitialize][hatchWinApp.cpp]
+[PRO][00000EFC] 2012-07-08 00:38:38 Net is start to excute. [107][CHatchApp::hatchInitialize][hatchWinApp.cpp]
+[PRO][00000EFC] 2012-07-08 00:38:38 Services is start to excute. [116][CHatchApp::hatchInitialize][hatchWinApp.cpp]
