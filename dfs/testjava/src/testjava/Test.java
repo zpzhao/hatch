@@ -6,6 +6,8 @@
 package testjava;
 
 import multithr.TestThread;
+import rpc.TestObject;
+import dir.DirRequestDispatcher;
 
 public class Test {
 
@@ -19,13 +21,32 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Test start:");
-		
+		/*
 		TestThread thr1 = new TestThread("thr1", 1);
 		TestThread thr2 = new TestThread("thr2", 2);
 		
 		thr1.start();
 		thr2.start();
-					
+	*/
+		
+		DirRequestDispatcher dirRequestDispatcher = new DirRequestDispatcher();
+		
+		dirRequestDispatcher.startup();
+		
+		for(int i = 0; i < 1; i++)
+		{
+			//for(int j = 0; j < i; j++)
+			{
+				TestObject to = new TestObject(i+"n");
+				System.out.println(to.GetObjectName());
+				dirRequestDispatcher.ReceiveRecord(to);
+			}
+				
+			//System.out.println(i+"main");
+		}
+		
+		// dirRequestDispatcher.shutdown();
+		
 		/* 
 		 * add shutdown hook here
 		 */
