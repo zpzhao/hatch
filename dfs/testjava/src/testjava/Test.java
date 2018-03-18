@@ -8,6 +8,7 @@ package testjava;
 import multithr.TestThread;
 import rpc.TestObject;
 import dir.DirRequestDispatcher;
+import test.other.*;
 
 public class Test {
 
