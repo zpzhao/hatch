@@ -8,7 +8,6 @@ package testjava;
 import multithr.TestThread;
 import rpc.TestObject;
 import dir.DirRequestDispatcher;
-import test.other.*;
 
 public class Test {
 
@@ -29,6 +28,7 @@ public class Test {
 		thr1.start();
 		thr2.start();
 	*/
+		
 		
 		DirRequestDispatcher dirRequestDispatcher = new DirRequestDispatcher();
 		
