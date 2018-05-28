@@ -1,5 +1,5 @@
 #
 java small programme
-> example01
-> example02
+ example01	HelloWorld
+ example02	forCycle
 
