@@ -27,7 +27,8 @@ public class ForceGc {
 		{
 			String[] a = new String[1024];
 			for(int i = 0; i < 1024; i++)
-				a[i] = "abc";			
+				a[i] = "abc" + i;		
+			System.out.println("run");
 		}
 	}
 
