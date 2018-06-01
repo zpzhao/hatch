@@ -44,8 +44,10 @@ public class ForceGc {
 	public void Test()
 	{
 		try {
+			do{
 			FileOp();
 			Arrayop();
+			}while(true);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,12 +76,12 @@ public class ForceGc {
 	{
 		PrintWriter ofile = new PrintWriter("in.txt");
 		ofile.println("test file ");
-		//ofile.close();
+		ofile.close();
 		
 		Scanner sfile = new Scanner(new File("in.txt"));
 		String tx = sfile.nextLine();
 		System.out.println(tx);
-		//sfile.close();
+		sfile.close();
 	}
 	
 	/**
