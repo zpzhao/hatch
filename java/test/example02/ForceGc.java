@@ -3,6 +3,7 @@
  */
 import java.io.*;
 import java.util.AbstractMap;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
@@ -37,12 +38,32 @@ public class ForceGc {
 		String dir = System.getProperty("user.dir");
 		System.out.println("CurrentDir:"+dir);
 		
+		fc.Test();
+	}
+	
+	public void Test()
+	{
 		try {
-			fc.FileOp();
+			FileOp();
+			Arrayop();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void Arrayop()
+	{
+		int[] num = new int[5000000];
+		
+		for(int i=0; i < 5000000 ; i++)
+		{
+			num[i] = (int) (Math.random() * 5000000);
+		}
+		
+		Arrays.sort(num);
+		
+		for(int i = 0; i< 5000000; i++)
+			System.out.println(num.toString());
 	}
 	
 	/**
@@ -53,12 +74,12 @@ public class ForceGc {
 	{
 		PrintWriter ofile = new PrintWriter("in.txt");
 		ofile.println("test file ");
-		ofile.close();
+		//ofile.close();
 		
 		Scanner sfile = new Scanner(new File("in.txt"));
 		String tx = sfile.nextLine();
 		System.out.println(tx);
-		sfile.close();
+		//sfile.close();
 	}
 	
 	/**
@@ -124,8 +145,8 @@ public class ForceGc {
 	}
 	
 
-@SuppressWarnings("unused")
-private static long[] readCpu(final Process proc) { 
+
+	public long[] readCpu(final Process proc) { 
         long[] retn = new long[2]; 
         try { 
             proc.getOutputStream().close(); 
