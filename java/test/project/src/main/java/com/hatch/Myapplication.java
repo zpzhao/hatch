@@ -22,7 +22,7 @@ public class Myapplication
 	 */
 	public Myapplication()
 	{
-		
+		MyPrint("Default Myapplication construction");
 	}
 
 	public static void main(String[] args)
@@ -30,9 +30,16 @@ public class Myapplication
 		Myapplication ap = new Myapplication();
 
 		System.out.println("hello world !");
-		System.out.println("index:"+ap.index+",name:"+ap.name+",el.name:"+ap.el.name);
+		System.out.println("index:"+Myapplication.index+",name:"+ap.name+",el.name:"+ap.el.GetName());
 	}
 
+	/**
+	 * operator
+	 */
+	public void MyPrint(String format)
+	{
+		System.out.println(format);
+	}
 }
 
 /**
@@ -43,8 +50,8 @@ public class Myapplication
 class Employee
 {
 
-	public int no;
-	public String name;
+	private int no;
+	private String name;
 	
 	/**
 	 * Initial block
@@ -54,5 +61,53 @@ class Employee
 		name = "e1";
 	}
 	
+	public Employee()
+	{
+		MyPrint("Default Employee construction: no:"+no+";name:"+name);
+	}
+	
+	public Employee(int ino, String sname)
+	{		
+		MyPrint("Employee2 construction: no:"+no+";name:"+name);
+		no = ino;
+		name =sname;
+		MyPrint("Employee2 construction: no:"+no+";name:"+name);
+	}
+	
+	/**
+	 * operators
+	 */
+	public void MyPrint(String format)
+	{
+		System.out.println(format);
+	}
+	
+	public void MyPrintElements()
+	{
+		MyPrint("no:"+no+";name:"+name);
+	}
+	
+	/**
+	 * get/set operators
+	 */
+	public int GetNo()
+	{
+		return no;
+	}
+	
+	public void SetNo(int ino)
+	{
+		no = ino;
+	}
+	
+	public String GetName()
+	{
+		return name;
+	}
+	
+	public void SetName(String sname)
+	{
+		name = sname;
+	}
 }
 
