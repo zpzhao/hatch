@@ -1,15 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--所有的Maven项目都必须配置这四个配置项-->
-    <modelVersion>4.0.0</modelVersion>
-    <!--groupId指的是项目名的项目组，默认就是包名-->
-    <groupId>com.hatch</groupId>
-    <!--artifactId指的是项目中的某一个模块，默认命名方式是"项目名-模块名"-->
-    <artifactId>hatch</artifactId>
-    <!--version指的是版本，这里使用的是Maven的快照版本-->
-    <version>SNAPSHOT-0.1</version>
-    <packaging>jar</packaging>
+	<!--所有的Maven项目都必须配置这四个配置项 -->
+	<modelVersion>4.0.0</modelVersion>
+	<!--groupId指的是项目名的项目组，默认就是包名 -->
+	<groupId>com.hatch</groupId>
+	<!--artifactId指的是项目中的某一个模块，默认命名方式是"项目名-模块名" -->
+	<artifactId>hatch</artifactId>
+	<!--version指的是版本，这里使用的是Maven的快照版本 -->
+	<version>SNAPSHOT-0.1</version>
+	<packaging>jar</packaging>
+
+
+	<name>hatch</name>
+	<url>http://maven.apache.org</url>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>id.pre-clean</id>
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>pre-clean phase</echo>
+							</tasks>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>clean phase</echo>
+							</tasks>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id.post-clean</id>
+						<phase>post-clean</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>post-clean phase</echo>
+							</tasks>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>id.test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>test phase</echo>
+							</tasks>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id.package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>package phase</echo>
+							</tasks>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id.deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>deploy phase</echo>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
