@@ -66,9 +66,9 @@ public class Manager extends Employee
 		// super.MyPrintElements();
 		if(null == range)
 		{
-			MyPrint("name:"+this.GetName()+"; range null to MyPrintElements.");
+			MyPrint("name:"+this.getName()+"; range null to MyPrintElements.");
 			return;
 		}
-		MyPrint("name:"+this.GetName()+";level:"+level+";range:"+range.GetX()+":"+range.GetY());
+		MyPrint("name:"+this.getName()+";level:"+level+";range:"+range.GetX()+":"+range.GetY());
 	}
 }

@@ -5,11 +5,10 @@ package com.hatch.common;
  * @author zhaozongpeng
  * @datetime 2018年6月12日下午1:47:56
  */
-public class Employee
+public class Employee extends Person
 {
 
 	private int no;
-	private String name;
 	private double salary;
 	
 	/**
@@ -23,7 +22,7 @@ public class Employee
 	public Employee()
 	{
 		salary = 0;
-		MyPrint("Default Employee construction: no:"+no+";name:"+name);
+		MyPrint("Default Employee construction: no:"+no+";name:"+getName());
 	}
 	
 	public Employee(int ino, String sname)
@@ -33,7 +32,7 @@ public class Employee
 		no = ino;
 		name =sname;
 		salary = 0;
-		MyPrint("Employee2 construction: no:"+no+";name:"+name);
+		MyPrint("Employee2 construction: no:"+no+";name:"+getName());
 		this.MyPrintElements();
 	}
 	
@@ -47,7 +46,7 @@ public class Employee
 	
 	public void MyPrintElements()
 	{
-		MyPrint("no:"+no+";name:"+name+";salary:"+salary);
+		MyPrint("no:"+no+";name:"+getName()+";salary:"+salary);
 	}
 	
 	/**
@@ -63,16 +62,6 @@ public class Employee
 		no = ino;
 	}
 	
-	public String GetName()
-	{
-		return name;
-	}
-	
-	public void SetName(String sname)
-	{
-		name = sname;
-	}
-	
 	public double GetSalary()
 	{
 		return salary;
@@ -81,6 +70,12 @@ public class Employee
 	public void SetSalary(double dsalary)
 	{
 		salary = dsalary;
+	}
+
+	@Override
+	public String getDescribe() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
