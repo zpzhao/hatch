@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import com.hatch.common.Area;
 import com.hatch.common.Employee;
 import com.hatch.member.Manager;
+import com.hatch.common.Level;
 
-public class Myapplication
+public class Myapplication extends Object
 {
 	public static int index;
 	public final String name = "abc";
@@ -108,6 +109,8 @@ public class Myapplication
 		
 		//ap.finalize();
 		
+		ap.testEnum();
+		
 		System.out.println("run program end.");
 	}
 
@@ -128,8 +131,24 @@ public class Myapplication
 		for(long i = 0; i < num ; i++)
 		{
 			staff.add(new Manager());
-		}
+		}			
+	}
+	
+	
+	public void testEnum()
+	{
+		MyPrint("========================ttestEnum");
 		
+		Level mg = Enum.valueOf(Level.class, "LOW_L");
+		
+		MyPrint(mg.toString());
+		Level l[] = Level.values();
+		MyPrint(l.toString());
+		
+		for(Level i:l)
+		{
+			MyPrint(i.ordinal()+"");
+		}
 		
 	}
 	
