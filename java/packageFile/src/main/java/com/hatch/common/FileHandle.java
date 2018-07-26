@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import com.hatch.master.Master;
 
@@ -35,6 +36,48 @@ public class FileHandle {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * @return the hfile
+	 */
+	public File getHfile() {
+		return hfile;
+	}
+
+	/**
+	 * @param hfile the hfile to set
+	 */
+	public void setHfile(File hfile) {
+		this.hfile = hfile;
+	}
+
+	/**
+	 * @return the dataOut
+	 */
+	public BufferedOutputStream getDataOut() {
+		return dataOut;
+	}
+
+	/**
+	 * @param dataOut the dataOut to set
+	 */
+	public void setDataOut(BufferedOutputStream dataOut) {
+		this.dataOut = dataOut;
+	}
+
+	/**
+	 * @return the dataIn
+	 */
+	public BufferedInputStream getDataIn() {
+		return dataIn;
+	}
+
+	/**
+	 * @param dataIn the dataIn to set
+	 */
+	public void setDataIn(BufferedInputStream dataIn) {
+		this.dataIn = dataIn;
+	}
+
 	/*
 	 * 
 	 */
@@ -62,6 +105,14 @@ public class FileHandle {
 		
 		
 		return 0;
+	}
+	
+	/**
+	 * get file size
+	 * @return
+	 */
+	public long GetFileSize() {
+		return hfile.length();
 	}
 	
 	public int OpenWriteFile(String filePath)
@@ -108,5 +159,66 @@ public class FileHandle {
 		
 		if(null != dataIn)
 			dataIn.close();
+		
+		dataOut = null;
+		dataIn = null;
+	}
+	
+	/**
+	 * read directory, return file list
+	 */
+	public ArrayList<String> ReadDir(String path, String base, boolean isTop) {
+		ArrayList<String> files = new ArrayList<String>();
+		String basePath = "";
+		
+		File file = new File(path);
+		if(!file.exists())
+		{
+			Master.getAplog().SevereLog(path+" not exits.", "FileHandle", "ReadDir");
+			return null;
+		}
+		
+		if(isTop)
+			basePath = file.getName();
+		else
+			basePath = base + "/" + file.getName();
+		
+		File[] tempList = file.listFiles();
+		if(null == tempList)
+		{
+			Master.getAplog().WarnLog(path+" is empty.", "FileHandle", "ReadDir");
+			return null;
+		}
+		
+		for(File f: tempList)
+		{
+			/* "/" need to windows or linux */
+			files.add(basePath+"/"+f.getName());
+			
+			if(f.isDirectory())
+			{
+				files.addAll(ReadDir(f.getAbsolutePath(), basePath, false));
+			}
+		}
+		
+		return files;
+	}
+	
+	public void finalize() {
+		if(null != dataOut)
+			try {
+				dataOut.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		if(null != dataIn)
+			try {
+				dataIn.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 }
