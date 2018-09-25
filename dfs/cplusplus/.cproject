@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.core.default.config.960757105">
+			<storageModule buildSystemId="org.eclipse.cdt.core.defaultConfigDataProvider" id="org.eclipse.cdt.core.default.config.960757105" moduleId="org.eclipse.cdt.core.settings" name="Configuration">
+				<externalSettings/>
+				<extensions/>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration"/>
+	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+		<pathentry include="/usr/local/include/c++/7.3.0" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/local/include" kind="inc" path="" system="true"/>
+		<pathentry include="/usr/include" kind="inc" path="" system="true"/>
+		<pathentry excluding="dir/|config/|common/|src/|test/|include/" kind="src" path=""/>
+		<pathentry excluding="dir|common" kind="src" path="src"/>
+		<pathentry kind="src" path="src/dir"/>
+		<pathentry kind="src" path="test"/>
+		<pathentry kind="out" path="build"/>
+	</storageModule>
+</cproject>
