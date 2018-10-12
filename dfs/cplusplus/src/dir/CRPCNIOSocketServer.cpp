@@ -17,7 +17,7 @@
 
 #define DEFAULT_MAXCONN	100
 
-CRPCNIOSocketServer::CRPCNIOSocketServer(CRPCServerRequestListener &rl)
+CRPCNIOSocketServer::CRPCNIOSocketServer(CRPCServerRequestListener *rl)
 {
 	// TODO Auto-generated constructor stub
 	serversocket = 0;

@@ -22,7 +22,7 @@ typedef enum QUIT
 
 class CRPCNIOSocketServer: public CThread, public CRPCServerInterface {
 public:
-	CRPCNIOSocketServer(CRPCServerRequestListener &rl);
+	CRPCNIOSocketServer(CRPCServerRequestListener *rl);
 	virtual ~CRPCNIOSocketServer();
 
 public:
@@ -41,7 +41,7 @@ private:
 	struct epoll_event *p_ep_events;
 	int server_ep;
 	int quit;
-	CRPCServerRequestListener receiver;
+	CRPCServerRequestListener *receiver;
 };
 
 #endif /* CRPCNIOSOCKETSERVER_H_ */

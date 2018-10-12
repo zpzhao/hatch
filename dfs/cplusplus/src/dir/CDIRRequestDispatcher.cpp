@@ -61,7 +61,7 @@ int CDIRRequestDispatcher::InitDirDispatcher()
  */
 void CDIRRequestDispatcher::ReceiveRecord(CServerRequest rq)
 {
-	this->queue.put(rq);
+	this->queue->put(rq);
 	return ;
 }
 
