@@ -15,6 +15,7 @@
 void handle_signal(int signal);
 void sigprocess();
 static void exit_nicely();
+CDIRRequestDispatcher *dirDisp = NULL;
 
 int main(int argc, char *argv[])
 {
@@ -42,7 +43,8 @@ int main(int argc, char *argv[])
 	 * start dispatch thread
 	 */
 	//TODO:
-	CDIRRequestDispatcher *dirDisp = new CDIRRequestDispatcher();
+	dirDisp = new CDIRRequestDispatcher();
+	dirDisp->InitDirDispatcher();
 	dirDisp->startup();
 	dirDisp->join();
 
@@ -126,6 +128,9 @@ void handle_signal(int signal)
 
 static void exit_nicely()
 {
+	if(dirDisp != NULL)
+		dirDisp->shutdown();
+	printf("shutdown dir now...\n");
 
 	//closelog();
    exit(1);
