@@ -9,7 +9,7 @@
 #define CRPCSERVERINTERFACE_H_
 
 class CRPCServerResponse;
-class CRPCServerRequest;
+class CServerRequest;
 
 class CRPCServerInterface {
 public:
@@ -17,7 +17,7 @@ public:
 	virtual ~CRPCServerInterface();
 
 public:
-	virtual void sendResponse(CRPCServerRequest request, CRPCServerResponse response) = 0;
+	virtual void sendResponse(CServerRequest &request, CRPCServerResponse &response) = 0;
 };
 
 #endif /* CRPCSERVERINTERFACE_H_ */

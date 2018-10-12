@@ -2,7 +2,8 @@ PROJECT_ROOT = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 OBJS = dir.o CDir.o CDirConfig.o CServiceConfig.o\
 		CThread.o CDIROperation.o CDIRRequestDispatcher.o\
-		CServerRequest.o CBlockingQueue.o CRPCServerResponse.o CRPCServerInterface.o
+		CServerRequest.o CBlockingQueue.o CRPCServerResponse.o CRPCServerInterface.o\
+		CRPCNIOSocketServer.o CRPCServerRequestListener.o
 
 ifeq ($(BUILD_MODE),debug)
 	CPPFLAGS += -g

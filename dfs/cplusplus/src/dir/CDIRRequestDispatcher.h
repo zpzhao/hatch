@@ -8,6 +8,8 @@
 #ifndef CDIRREQUESTDISPATCHER_H_
 #define CDIRREQUESTDISPATCHER_H_
 
+#include "CRPCServerRequestListener.h"
+#include "CRPCNIOSocketServer.h"
 #include "CBlockingQueue.h"
 #include "CServerRequest.h"
 #include "CThread.h"
@@ -16,22 +18,27 @@
 class CDIROperation;
 typedef std::map<int,CDIROperation&> OperationMap;
 
-class CDIRRequestDispatcher: public CThread {
+class CDIRRequestDispatcher: public CThread , public CRPCServerRequestListener {
 public:
 	CDIRRequestDispatcher();
 	virtual ~CDIRRequestDispatcher();
 
 	void ReceiveRecord(CServerRequest rq);
-
+	void ProcessRequest(CServerRequest rq);
 	/**
 	 * thread interface implement
 	 */
 	void run();
 	void startup();
+	void shutdown();
 
+	int InitDirDispatcher();
 private:
 	OperationMap registry;
-	CBlockingQueue<CServerRequest> queue;
+	CBlockingQueue<CServerRequest> *queue;
+	CRPCNIOSocketServer *server;
+	int numRequests;
+	int quit;
 };
 
 #endif /* CDIRREQUESTDISPATCHER_H_ */

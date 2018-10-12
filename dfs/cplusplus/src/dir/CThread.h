@@ -36,6 +36,7 @@ public:
 	void join();
 	//等待线程退出或者超时
 	void join(unsigned long millisTime);
+
 private:
 	//当前线程的线程ID
 	pthread_t tid;
