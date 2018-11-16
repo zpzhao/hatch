@@ -52,9 +52,10 @@ void CRPCNIOSocketServer::run()
 	while(quit != QUIT_YES)
 	{
 		// no timeout limits
-		eventNum = epoll_wait(this->server_ep, p_ep_events, listen_maxconn, 0);
+		eventNum = epoll_wait(this->server_ep, p_ep_events, listen_maxconn, -1);
 		if(eventNum < 0)
 		{
+			//printf("wait err:%d- %d - %d \n",errno,server_ep, listen_maxconn);
 			usleep(100);
 			continue;
 		}
@@ -62,7 +63,7 @@ void CRPCNIOSocketServer::run()
 		iRet = ProcessEvent(eventNum);
 		if(iRet < 0)
 		{
-			; // TODO:
+			printf("process Event err[%d]\n",errno); // TODO:
 		}
 	}
 
@@ -74,6 +75,7 @@ void CRPCNIOSocketServer::run()
 	return;
 }
 
+char *pbuff = new char[8024];
 /**
  * socket事件处理
  */
@@ -95,14 +97,20 @@ int CRPCNIOSocketServer::ProcessEvent(int eventNum)
 					(struct sockaddr *) &connsockaddr, &sockaddrlen)) < 0) {
 				return connfd;
 			}
+			printf("connect server[%s:%d]\n",inet_ntoa(connsockaddr.sin_addr),connsockaddr.sin_port);
 
 			AddFd(connfd); // default edgetrrige and oneshot
 		}
 		else if(this->p_ep_events[i].events & EPOLLIN)
 		{
 			// readbuf, by multiple threads
-			;
+			int len = ReadBuff(this->p_ep_events[i].data.fd, pbuff, 8024);
+
+			CServerRequest *rq = new CServerRequest();
+			rq->InputBuffer(pbuff, len);
+
 			// receiver.ReceiveRecord
+			this->receiver->ReceiveRecord(*rq);
 		}
 		else if(this->p_ep_events[i].events & EPOLLOUT)
 		{
@@ -120,6 +128,18 @@ int CRPCNIOSocketServer::ProcessEvent(int eventNum)
 }
 
 /**
+ * 读消息
+ */
+int CRPCNIOSocketServer::ReadBuff(int fd , char *buff, int size)
+{
+	int len = 0;
+
+	len = recv(fd, buff, size, 0);
+
+	return len;
+}
+
+/**
  * 添加socket fd及对应事件到epoll中
  */
 int CRPCNIOSocketServer::AddFd(int fd, int enable_et, int oneshot)
@@ -127,7 +147,8 @@ int CRPCNIOSocketServer::AddFd(int fd, int enable_et, int oneshot)
 	struct epoll_event ep_event;
 	memset((void*)&ep_event, 0x00, sizeof(ep_event));
 
-	ep_event.events = EPOLLIN | EPOLLPRI | EPOLLOUT;
+	//ep_event.events = EPOLLIN | EPOLLOUT;
+	ep_event.events = EPOLLIN ;
 	ep_event.data.fd = fd;
 
 	if(enable_et)
@@ -172,6 +193,7 @@ int CRPCNIOSocketServer::CreateServer(unsigned int port, std::string address)
 
 	if(ret < 0)
 	{
+		printf("setsocketopt err[%d]\n",errno);
 		close(serversocket);
 		serversocket = -1;
 		return -1;
@@ -179,7 +201,7 @@ int CRPCNIOSocketServer::CreateServer(unsigned int port, std::string address)
 
 	struct sockaddr_in serveraddr;
 	if(address == "*")
-		serveraddr.sin_addr.s_addr = inet_addr(INADDR_ANY);
+		serveraddr.sin_addr.s_addr = htons(INADDR_ANY);
 	else
 		serveraddr.sin_addr.s_addr = inet_addr(address.c_str());
 	serveraddr.sin_family = AF_INET;
@@ -187,6 +209,7 @@ int CRPCNIOSocketServer::CreateServer(unsigned int port, std::string address)
 
 	if(bind(serversocket, (struct sockaddr *)&serveraddr, sizeof(serveraddr)) < 0)
 	{
+		printf("bind err[%d]\n",errno);
 		close(serversocket);
 		serversocket = -1;
 		return -1;
@@ -194,6 +217,7 @@ int CRPCNIOSocketServer::CreateServer(unsigned int port, std::string address)
 
 	if(listen(serversocket, listen_maxconn) < 0)
 	{
+		printf("listen err[%d]\n",errno);
 		close(serversocket);
 		serversocket = -1;
 		return -1;
@@ -211,13 +235,14 @@ int CRPCNIOSocketServer::CreateEventWait()
 		return -1;
 
 	p_ep_events = new struct epoll_event[listen_maxconn];
-	if(p_ep_events)
+	if(NULL == p_ep_events)
 		return -1;
 
 	int flag = EPOLL_CLOEXEC;
 	server_ep = epoll_create1(flag);
+	printf("ep:%d - %d\n",errno, server_ep);
 
-	return 0;
+	return server_ep;
 }
 
 int CRPCNIOSocketServer::InitServer(unsigned int port, std::string address)
@@ -225,8 +250,18 @@ int CRPCNIOSocketServer::InitServer(unsigned int port, std::string address)
 	int iRet = 0;
 	iRet = CreateServer(port, address);
 	if(iRet < 0)
+	{
+		printf("createserver err[%d]\n",errno);
 		return iRet;
+	}
 	iRet = CreateEventWait();
+	if(iRet < 0)
+	{
+		printf("create event err[%d]\n",errno);
+		return iRet;
+	}
+
+	iRet = AddFd(this->serversocket);
 
 	return iRet;
 }

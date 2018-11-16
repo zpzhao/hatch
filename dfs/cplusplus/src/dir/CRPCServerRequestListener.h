@@ -15,7 +15,7 @@ public:
 	CRPCServerRequestListener();
 	virtual ~CRPCServerRequestListener();
 public:
-	virtual void ReceiveRecord(CServerRequest rq) = 0;
+	virtual void ReceiveRecord(CServerRequest &rq) = 0;
 };
 
 #endif /* CRPCSERVERREQUESTLISTENER_H_ */

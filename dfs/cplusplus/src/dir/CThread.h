@@ -36,6 +36,8 @@ public:
 	void join();
 	//等待线程退出或者超时
 	void join(unsigned long millisTime);
+	//计算时间差seconds
+	long getElapse(int start=1);
 
 private:
 	//当前线程的线程ID

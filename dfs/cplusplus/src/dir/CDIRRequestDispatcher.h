@@ -23,8 +23,8 @@ public:
 	CDIRRequestDispatcher();
 	virtual ~CDIRRequestDispatcher();
 
-	void ReceiveRecord(CServerRequest rq);
-	void ProcessRequest(CServerRequest rq);
+	void ReceiveRecord(CServerRequest &rq);
+	void ProcessRequest(CServerRequest &rq);
 	/**
 	 * thread interface implement
 	 */
@@ -35,7 +35,7 @@ public:
 	int InitDirDispatcher();
 private:
 	OperationMap registry;
-	CBlockingQueue<CServerRequest> *queue;
+	CBlockingQueue<CServerRequest*> *queue;
 	CRPCNIOSocketServer *server;
 	int numRequests;
 	int quit;

@@ -5,6 +5,7 @@ OBJS = dir.o CDir.o CDirConfig.o CServiceConfig.o\
 		CServerRequest.o CBlockingQueue.o CRPCServerResponse.o CRPCServerInterface.o\
 		CRPCNIOSocketServer.o CRPCServerRequestListener.o
 
+BUILD_MODE=debug
 ifeq ($(BUILD_MODE),debug)
 	CPPFLAGS += -g
 else ifeq ($(BUILD_MODE),run)

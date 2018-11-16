@@ -72,3 +72,15 @@ void CThread::join(unsigned long millisTime) {
 		}
 	}
 }
+
+/**
+ * get timie elapse ; from start= 1
+ */
+static time_t start_t = 0;
+long CThread::getElapse(int start)
+{
+	time_t cur_t = time(NULL);
+	if(start)
+		start_t = time(NULL);
+	return cur_t - start_t;
+}

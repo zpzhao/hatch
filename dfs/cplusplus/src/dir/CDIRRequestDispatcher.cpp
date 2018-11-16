@@ -10,7 +10,8 @@
 #define DEBUG(x,y,z)	std::cout<<x<<y<<z<<std::endl;
 
 #define DEFAULT_PORT 8000
-#define DEFAULT_IP	  "127.0.0.1"
+#define DEFAULT_IP	  "*"
+
 
 CDIRRequestDispatcher::CDIRRequestDispatcher()
 {
@@ -41,7 +42,7 @@ int CDIRRequestDispatcher::InitDirDispatcher()
 {
 	int iRet = 0;
 
-	queue = new CBlockingQueue<CServerRequest>();
+	queue = new CBlockingQueue<CServerRequest*>();
 	if(NULL == queue)
 		return -1;
 
@@ -59,9 +60,9 @@ int CDIRRequestDispatcher::InitDirDispatcher()
 /**
  * 接收请求,加入消息队列
  */
-void CDIRRequestDispatcher::ReceiveRecord(CServerRequest rq)
+void CDIRRequestDispatcher::ReceiveRecord(CServerRequest &rq)
 {
-	this->queue->put(rq);
+	this->queue->put(&rq);
 	return ;
 }
 
@@ -74,8 +75,8 @@ void CDIRRequestDispatcher::run()
 	// TODO: process request
 	while(!quit)
 	{
-		CServerRequest rq = queue->take();
-		ProcessRequest(rq);
+		CServerRequest *rq = queue->take();
+		ProcessRequest(*rq);
 	}
 	return ;
 }
@@ -91,12 +92,28 @@ void CDIRRequestDispatcher::startup()
 	DEBUG("startup run ret = ",iret,"");
 }
 
+#define MB_MASK	(~(1024*1024))
 /**
  * 处理请求
  */
-void CDIRRequestDispatcher::ProcessRequest(CServerRequest rq)
+void CDIRRequestDispatcher::ProcessRequest(CServerRequest &rq)
 {
-
+	static unsigned long len = 0;
+	static unsigned long packnum = 0;
+	long t = 0;
+	if(len == 0)
+	{
+		t = this->getElapse(1);
+	}
+	packnum++;
+	len += rq.BuffernLength/1024/8/1024;
+	t = this->getElapse(0);
+	if(t > 30)
+	{
+		printf("process packnum:%d, bytes(MB):%d\n", packnum,len);
+		t = this->getElapse(1);
+	}
+	delete &rq;
 }
 
 /**

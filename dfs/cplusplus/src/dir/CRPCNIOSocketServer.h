@@ -35,6 +35,7 @@ public:
 	int CreateEventWait();
 	int ProcessEvent(int eventNum);
 	int AddFd(int fd, int enable_et=0, int oneshot=0);
+	int ReadBuff(int fd, char *buff, int size);
 private:
 	int serversocket;
 	int listen_maxconn;
