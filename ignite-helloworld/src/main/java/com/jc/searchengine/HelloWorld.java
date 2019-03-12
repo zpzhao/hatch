@@ -1,5 +1,5 @@
 package com.jc.searchengine;
-
+import java.util.Random;
 import com.jc.searchengine.po.Person;
 
 import java.sql.Connection;
@@ -55,6 +55,8 @@ public class HelloWorld
 			e1.printStackTrace();
 		}
 
+	String tbl_sql = "create table  tbl_employ(id LONG primary key, name varchar, etime timestamp,info varchar, salary real);";
+	String insert_sql = "insert into tbl_employ(id,name,etime,info,salary) values(";
 		
     	// Create database tables.
     	try (Statement stmt = conn.createStatement()) {
@@ -65,7 +67,7 @@ public class HelloWorld
     	    " WITH \"template=replicated\"");*/
 
     	    // Create table based on PARTITIONED template with one backup.
-    	    stmt.executeUpdate("CREATE TABLE people (" +
+/*    	    stmt.executeUpdate("CREATE TABLE people (" +
     	    " id LONG, name VARCHAR, town_id LONG, " +
     	    " PRIMARY KEY (id, town_id)) " +
     	    " WITH \"backups=1, affinityKey=town_id\"");
@@ -74,11 +76,45 @@ public class HelloWorld
     	    stmt.executeUpdate("CREATE INDEX idx_town_name ON town (name)");
 
     	    // Create an index on the Person table.
-    	    stmt.executeUpdate("CREATE INDEX idx_people_name ON people (name)");
+    	    stmt.executeUpdate("CREATE INDEX idx_people_name ON people (name)");*/
+    		    		   
+    		// test sql
+    		// insert into tbl_employ(id,name,etime,info,salary) 
+    		// values(1,'test',current_timestamp(),'hello teest',8.4);
+    		String tval = insert_sql;
+    		for(int i = 20; i < 100000; i++)
+    		{
+    			tval = insert_sql;
+    			tval += i + ","; // id
+    			tval += "'" + getRandomString(16) +"',"; // name
+    			tval += "current_timestamp(),"; // etime
+    			tval += "'" + getRandomString(48) +"',"; // info
+    			tval += getRandomFloat(10.0f, 100.0f); // salary
+    			tval += ");"; // end
+    			System.out.println(tval);
+    			stmt.executeUpdate(tval);    			
+    		}
+    		
+    		// stmt.executeUpdate("select count(*) from tbl_employ;");
     	} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
     		System.out.println("statement failure.");
 			e.printStackTrace();
 		}
     }
+ public static String getRandomString(int length){
+     String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+     Random random=new Random();
+     StringBuffer sb=new StringBuffer();
+     for(int i=0;i<length;i++){
+       int number=random.nextInt(62);
+       sb.append(str.charAt(number));
+     }
+     return sb.toString();
+  }
+ 
+ public static float getRandomFloat(float min, float max) {
+		float floatBounded = min + new Random().nextFloat() * (max - min);
+		return floatBounded;
+ }
 }
