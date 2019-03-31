@@ -9,10 +9,12 @@ package pattern.singleton.lazy;
 
 public class LazySingletonSyc {
 	private static LazySingletonSyc instance = null;
-	private LazySingletonSyc() {}
-	
+
+	private LazySingletonSyc() {
+	}
+
 	public synchronized static LazySingletonSyc getInstance() {
-		if(null == instance) {
+		if (null == instance) {
 			instance = new LazySingletonSyc();
 		}
 		return instance;

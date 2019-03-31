@@ -8,20 +8,20 @@
 package pattern.singleton.lazy;
 
 /**
- * @author senllang
- * 2019.3.30
+ * @author senllang 2019.3.30
  */
 public class LazySingleton {
 	private static LazySingleton LazyInstance = null;
-	
-	private LazySingleton() {}
-	
+
+	private LazySingleton() {
+	}
+
 	public static LazySingleton getInstance() {
-		if(null == LazyInstance) {
+		if (null == LazyInstance) {
 			LazyInstance = new LazySingleton();
 		}
-		
+
 		return LazyInstance;
 	}
-	
+
 }

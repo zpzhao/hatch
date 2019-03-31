@@ -19,14 +19,23 @@
  * @author senllang
  */
 package pattern.singleton;
+
 import pattern.singleton.lazy.*;
+import pattern.singleton.serializable.SingletonSerializable;;
+import pattern.singleton.register.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 import java.lang.Thread;
+import java.lang.reflect.*;
 import java.util.List;
 import java.util.ArrayList;
 
 /**
- * @author senllang
- * 2019.3.30
+ * @author senllang 2019.3.30
  */
 public class SingletonTest {
 
@@ -35,85 +44,193 @@ public class SingletonTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		// LazyTest();
-		//LazyThreadTest();
-		//LazySycThreadTest();
-		LazyInnerTest();
-		
+		// LazyThreadTest();
+		// LazySycThreadTest();
+		// LazyInnerTest();
+		// LazyReflectTest();
+		// LazyReflect1Test();
+		// LazySerializable();
+		singletonRegEnumTest();
+
 	}
-	
+
 	/**
-	 * @author senllang
-	 * 懒汉模式测试
+	 * @author senllang 懒汉模式测试
 	 */
 	public static void LazyTest() {
-		LazySingleton lzsimple = LazySingleton.getInstance();	
+		LazySingleton lzsimple = LazySingleton.getInstance();
 		LazySingleton lzsimple1 = LazySingleton.getInstance();
-		
-		System.out.print("instance1 :"+lzsimple+"\ninstance2:"+lzsimple1);
+
+		System.out.print("instance1 :" + lzsimple + "\ninstance2:" + lzsimple1);
 	}
-	
+
 	/**
 	 * @author senllang
-	 * @category 在多线程下测试
-	 * 懒汉模式在是线程不安全的，如果只是简单单例，每个线程可能得到的实例是不同的
+	 * @category 在多线程下测试 懒汉模式在是线程不安全的，如果只是简单单例，每个线程可能得到的实例是不同的
 	 */
 	public static void LazyThreadTest() {
 		Thread th1 = new Thread(new LazySingletonThread());
 		Thread th2 = new Thread(new LazySingletonThread());
-		
+
 		th1.start();
 		th2.start();
 	}
-	
+
 	/**
 	 * @author senllang
-	 * @category 在多线程下测试
-	 * 懒汉模式,获取实例方法增加synchronized ，保证线程安全，但是在调用并发高频繁时效率不高，cpu占用多
+	 * @category 在多线程下测试 懒汉模式,获取实例方法增加synchronized
+	 *           ，保证线程安全，但是在调用并发高频繁时效率不高，cpu占用多
 	 */
 	public static void LazySycThreadTest() {
 		List<Thread> thlist = new ArrayList<Thread>();
-		
-		for(int i=0; i < 20; i++) {
+
+		for (int i = 0; i < 20; i++) {
 			thlist.add(new Thread(new LazySingletonSycThread()));
 		}
-		
-		
-		for(int i=0; i < 20; i++) {
+
+		for (int i = 0; i < 20; i++) {
 			Thread th = thlist.get(i);
 			th.start();
 		}
 	}
-	
+
 	/**
-	 * 静态内部类实现懒汉单例
-	 * 并观察内部类加载时机，和单例创建时机
+	 * 静态内部类实现懒汉单例 并观察内部类加载时机，和单例创建时机
 	 */
 	public static void LazyInnerTest() {
 		// 可以将无参构造改为public，可以更好观察加载的时机，可以看到外部类实例创建了，内部类还没有加载
-		//LazySingletonInnercls ly1 = new LazySingletonInnercls();
+		// LazySingletonInnercls ly1 = new LazySingletonInnercls();
 		LazySingletonInnercls ly1 = null;
-		System.out.println("ly1 : "+ly1);
-		
+		System.out.println("ly1 : " + ly1);
+
 		LazySingletonInnercls ly2 = LazySingletonInnercls.getInstance();
-		
+
 		ly1 = LazySingletonInnercls.getInstance();
+
+		System.out.println("ly1 : " + ly1 + "\nly2" + ly2);
+	}
+
+	/**
+	 * 静态内部类实现懒汉单例 通过反射破坏单例，可以创建多个实例
+	 */
+	public static void LazyReflectTest() {
+		try {
+			Class<?> clazz = LazySingletonInnercls.class;
+			// 通过反射拿到私有的构造方法
+			Constructor<?> c = clazz.getDeclaredConstructor(null);
+			// 强制访问，设置访问权限
+			c.setAccessible(true);
+			// 强制构造，初始化实例
+			Object o1 = c.newInstance();
+
+			// 调用两次构造，初始化两个实例
+			// 犯了原则性问题，破坏了单例
+			Object o2 = c.newInstance();
+
+			System.out.println("o1 : " + o1 + "\no2 : " + o2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 静态内部类实现懒汉单例 通过反射破坏单例，改造构造函数后就可以防止破坏
+	 */
+	public static void LazyReflect1Test() {
+		try {
+			Class<?> clazz = LazysingletonReflect.class;
+			// 通过反射拿到私有的构造方法
+			Constructor<?> c = clazz.getDeclaredConstructor(null);
+			// 强制访问，设置访问权限
+			c.setAccessible(true);
+			// 强制构造，初始化实例
+			Object o1 = c.newInstance();
+
+			// 调用两次构造，初始化两个实例
+			// 犯了原则性问题，破坏了单例
+			Object o2 = c.newInstance();
+
+			System.out.println("o1 : " + o1 + "\no2 : " + o2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 测试序列化对单例的破坏 不管是懒汉还是饿汉都会存在序列化破化的情况，这里只是测试序列化破坏的情况
+	 */
+	public static void LazySerializable() {
+		SingletonSerializable s1 = null;
+		SingletonSerializable s2 = SingletonSerializable.getInstance();
+		System.out.println("getinstance");
 		
-		System.out.println("ly1 : "+ly1+"\nly2"+ly2);
+		FileOutputStream fout = null;
+		FileInputStream fin = null;
+		
+		try {
+			fout = new FileOutputStream("serializableInstance.obj");
+			ObjectOutputStream oos = new ObjectOutputStream(fout);
+			
+			oos.writeObject(s2);
+			oos.flush();
+			oos.close();
+			
+			System.out.println("write Object end");
+			
+			fin = new FileInputStream("serializableInstance.obj");
+			ObjectInputStream ois = new ObjectInputStream(fin);
+			s1 = (SingletonSerializable)ois.readObject();
+			ois.close();
+			System.out.println("read Object end");
+			System.out.println(s1);
+			System.out.println(s2);
+			System.out.println(s1 == s2);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
 	/**
-	 * 静态内部类实现懒汉单例
-	 * 通过反射破坏单例，可以创建多个实例
+	 * 枚举注册式单例 ，可以避免序列化时创建新的实例
 	 */
-	public static void LazyReflectTest() {
+	public static void singletonRegEnumTest() {
+		SingletonRegEnum s1 = null;
+		SingletonRegEnum s2 = SingletonRegEnum.getInstance();
+		s2.setData(new Object());
+		System.out.println("getinstance");
 		
-		LazySingletonInnercls ly2 = LazySingletonInnercls.getInstance();
+		FileOutputStream fout = null;
+		FileInputStream fin = null;
 		
-		ly1 = LazySingletonInnercls.getInstance();
-		
-		System.out.println("ly1 : "+ly1+"\nly2"+ly2);
+		try {
+			fout = new FileOutputStream("serializableInstance.obj");
+			ObjectOutputStream oos = new ObjectOutputStream(fout);
+			
+			oos.writeObject(s2);
+			oos.flush();
+			oos.close();
+			
+			System.out.println("write Object end");
+			
+			fin = new FileInputStream("serializableInstance.obj");
+			ObjectInputStream ois = new ObjectInputStream(fin);
+			s1 = (SingletonRegEnum)ois.readObject();
+			ois.close();
+			System.out.println("read Object end");
+			System.out.println(s1.getData());
+			System.out.println(s2.getData());
+			
+			// s2.setData(new Object());
+			System.out.println(s1.getData() == s2.getData());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
