@@ -21,7 +21,7 @@
 package pattern.singleton;
 
 import pattern.singleton.lazy.*;
-import pattern.singleton.serializable.SingletonSerializable;;
+import pattern.singleton.serializable.SingletonSerializable;
 import pattern.singleton.register.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -52,8 +52,9 @@ public class SingletonTest {
 		// LazyReflectTest();
 		// LazyReflect1Test();
 		// LazySerializable();
-		singletonRegEnumTest();
-
+		// singletonRegEnumTest();
+		// SingletonEnumReflect();
+		SingletonContainerTest();
 	}
 
 	/**
@@ -201,6 +202,7 @@ public class SingletonTest {
 	public static void singletonRegEnumTest() {
 		SingletonRegEnum s1 = null;
 		SingletonRegEnum s2 = SingletonRegEnum.getInstance();
+		// 枚举为什么只能在这里赋值，在后面赋值都不会生效
 		s2.setData(new Object());
 		System.out.println("getinstance");
 		
@@ -232,5 +234,59 @@ public class SingletonTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 枚举式单例的反射测试
+	 * 不能被反射，在JAVA代码中对枚举做了特殊处理，保证枚举只被加载一次，只有一个实例；
+	 */
+	public static void SingletonEnumReflect() {
+		Class<?> clazz = SingletonRegEnum.class;
+		Constructor c;
+		try {
+			c = clazz.getDeclaredConstructor(String.class, int.class);
+			c.setAccessible(true);
+			SingletonRegEnum s = (SingletonRegEnum)c.newInstance("temp",200);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SecurityException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 测试容器注册式单例
+	 * 是线程不安全的，基本上是每个线程内保持单例
+	 */
+	public static void SingletonContainerTest() {
+		long startTime = System.currentTimeMillis();
+		
+		ConcurrentExcutor.execute(new ConcurrentExcutor.RunHandler() {
+			
+			@Override
+			public void handle() {
+				// TODO Auto-generated method stub
+				Object obj = SingletonContainer.getBean("pattern.singleton.register.Pojo");
+				System.out.println(System.currentTimeMillis()+":"+Thread.currentThread().getName()+":"+obj);
+			}
+		}, 1000, 2);
+		
+		long endTime = System.currentTimeMillis();
+		
+		System.out.println("总耗时:"+(endTime-startTime)+" ms.");
 	}
 }
