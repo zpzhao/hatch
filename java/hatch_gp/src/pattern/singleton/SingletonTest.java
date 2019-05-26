@@ -22,6 +22,7 @@ package pattern.singleton;
 
 import pattern.singleton.lazy.*;
 import pattern.singleton.serializable.SingletonSerializable;
+import pattern.singleton.threadlocal.SingletonThreadlocal;
 import pattern.singleton.register.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -54,7 +55,8 @@ public class SingletonTest {
 		// LazySerializable();
 		// singletonRegEnumTest();
 		// SingletonEnumReflect();
-		SingletonContainerTest();
+		// SingletonContainerTest();
+		SingletonThreadLocal();
 	}
 
 	/**
@@ -288,5 +290,25 @@ public class SingletonTest {
 		long endTime = System.currentTimeMillis();
 		
 		System.out.println("总耗时:"+(endTime-startTime)+" ms.");
+	}
+	
+	/**
+	 * 测试单例的threadlocal实现
+	 * 不同线程获取的实例不同，同一线程获取相同的实例；
+	 * 这就是空间获取时间；上面单例给方法加锁，是以时间获取空间的做法
+	 */
+	public static void SingletonThreadLocal() {
+		
+		/* main 中多次获取实例，都是同一个实例 */
+		System.out.println(SingletonThreadlocal.getInstance());
+		System.out.println(SingletonThreadlocal.getInstance());
+		System.out.println(SingletonThreadlocal.getInstance());
+		System.out.println(SingletonThreadlocal.getInstance());
+		
+		Thread t1 = new Thread(new LazySingletonThread());
+		Thread t2 = new Thread(new LazySingletonThread());
+		
+		t1.start();
+		t2.start();
 	}
 }
