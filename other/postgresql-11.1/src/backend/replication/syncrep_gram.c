@@ -70,7 +70,7 @@
 #define yychar          syncrep_yychar
 
 /* Copy the first part of user declarations.  */
-#line 1 "src/backend/replication/syncrep_gram.y" /* yacc.c:339  */
+#line 1 "syncrep_gram.y" /* yacc.c:339  */
 
 /*-------------------------------------------------------------------------
  *
@@ -108,7 +108,7 @@ static SyncRepConfigData *create_syncrep_config(const char *num_sync,
 #define YYFREE   pfree
 
 
-#line 112 "src/backend/replication/syncrep_gram.c" /* yacc.c:339  */
+#line 112 "syncrep_gram.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -153,13 +153,13 @@ extern int syncrep_yydebug;
 
 union YYSTYPE
 {
-#line 43 "src/backend/replication/syncrep_gram.y" /* yacc.c:355  */
+#line 43 "syncrep_gram.y" /* yacc.c:355  */
 
 	char	   *str;
 	List	   *list;
 	SyncRepConfigData *config;
 
-#line 163 "src/backend/replication/syncrep_gram.c" /* yacc.c:355  */
+#line 163 "syncrep_gram.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -176,7 +176,7 @@ int syncrep_yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 180 "src/backend/replication/syncrep_gram.c" /* yacc.c:358  */
+#line 180 "syncrep_gram.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1255,61 +1255,61 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 59 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 59 "syncrep_gram.y" /* yacc.c:1646  */
     { syncrep_parse_result = (yyvsp[0].config); }
-#line 1261 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1261 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 63 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 63 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.config) = create_syncrep_config("1", (yyvsp[0].list), SYNC_REP_PRIORITY); }
-#line 1267 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1267 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 64 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 64 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.config) = create_syncrep_config((yyvsp[-3].str), (yyvsp[-1].list), SYNC_REP_PRIORITY); }
-#line 1273 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1273 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 65 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 65 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.config) = create_syncrep_config((yyvsp[-3].str), (yyvsp[-1].list), SYNC_REP_QUORUM); }
-#line 1279 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1279 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 66 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 66 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.config) = create_syncrep_config((yyvsp[-3].str), (yyvsp[-1].list), SYNC_REP_PRIORITY); }
-#line 1285 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1285 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 70 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 70 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.list) = list_make1((yyvsp[0].str)); }
-#line 1291 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1291 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 71 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 71 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.list) = lappend((yyvsp[-2].list), (yyvsp[0].str)); }
-#line 1297 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1297 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 75 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 75 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 1303 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1303 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 76 "src/backend/replication/syncrep_gram.y" /* yacc.c:1646  */
+#line 76 "syncrep_gram.y" /* yacc.c:1646  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 1309 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1309 "syncrep_gram.c" /* yacc.c:1646  */
     break;
 
 
-#line 1313 "src/backend/replication/syncrep_gram.c" /* yacc.c:1646  */
+#line 1313 "syncrep_gram.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1537,7 +1537,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 78 "src/backend/replication/syncrep_gram.y" /* yacc.c:1906  */
+#line 78 "syncrep_gram.y" /* yacc.c:1906  */
 
 
 static SyncRepConfigData *

@@ -1,6 +1,6 @@
-#line 1 "src/backend/replication/syncrep_scanner.c"
+#line 2 "syncrep_scanner.c"
 
-#line 3 "src/backend/replication/syncrep_scanner.c"
+#line 4 "syncrep_scanner.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -8,17 +8,11 @@
 
 #define yy_create_buffer syncrep_yy_create_buffer
 #define yy_delete_buffer syncrep_yy_delete_buffer
-#define yy_scan_buffer syncrep_yy_scan_buffer
-#define yy_scan_string syncrep_yy_scan_string
-#define yy_scan_bytes syncrep_yy_scan_bytes
+#define yy_flex_debug syncrep_yy_flex_debug
 #define yy_init_buffer syncrep_yy_init_buffer
 #define yy_flush_buffer syncrep_yy_flush_buffer
 #define yy_load_buffer_state syncrep_yy_load_buffer_state
 #define yy_switch_to_buffer syncrep_yy_switch_to_buffer
-#define yypush_buffer_state syncrep_yypush_buffer_state
-#define yypop_buffer_state syncrep_yypop_buffer_state
-#define yyensure_buffer_stack syncrep_yyensure_buffer_stack
-#define yy_flex_debug syncrep_yy_flex_debug
 #define yyin syncrep_yyin
 #define yyleng syncrep_yyleng
 #define yylex syncrep_yylex
@@ -34,53 +28,10 @@
 #define FLEX_SCANNER
 #define YY_FLEX_MAJOR_VERSION 2
 #define YY_FLEX_MINOR_VERSION 6
-#define YY_FLEX_SUBMINOR_VERSION 4
+#define YY_FLEX_SUBMINOR_VERSION 1
 #if YY_FLEX_SUBMINOR_VERSION > 0
 #define FLEX_BETA
 #endif
-
-#define yy_create_buffer syncrep_yy_create_buffer
-    #define yy_delete_buffer syncrep_yy_delete_buffer
-    #define yy_scan_buffer syncrep_yy_scan_buffer
-    #define yy_scan_string syncrep_yy_scan_string
-    #define yy_scan_bytes syncrep_yy_scan_bytes
-    #define yy_init_buffer syncrep_yy_init_buffer
-    #define yy_flush_buffer syncrep_yy_flush_buffer
-    #define yy_load_buffer_state syncrep_yy_load_buffer_state
-    #define yy_switch_to_buffer syncrep_yy_switch_to_buffer
-    #define yypush_buffer_state syncrep_yypush_buffer_state
-    #define yypop_buffer_state syncrep_yypop_buffer_state
-    #define yyensure_buffer_stack syncrep_yyensure_buffer_stack
-    #define yylex syncrep_yylex
-    #define yyrestart syncrep_yyrestart
-    #define yylex_init syncrep_yylex_init
-    #define yylex_init_extra syncrep_yylex_init_extra
-    #define yylex_destroy syncrep_yylex_destroy
-    #define yyget_debug syncrep_yyget_debug
-    #define yyset_debug syncrep_yyset_debug
-    #define yyget_extra syncrep_yyget_extra
-    #define yyset_extra syncrep_yyset_extra
-    #define yyget_in syncrep_yyget_in
-    #define yyset_in syncrep_yyset_in
-    #define yyget_out syncrep_yyget_out
-    #define yyset_out syncrep_yyset_out
-    #define yyget_leng syncrep_yyget_leng
-    #define yyget_text syncrep_yyget_text
-    #define yyget_lineno syncrep_yyget_lineno
-    #define yyset_lineno syncrep_yyset_lineno
-    
-    #define yywrap syncrep_yywrap
-
-#define yyalloc syncrep_yyalloc
-    #define yyrealloc syncrep_yyrealloc
-    #define yyfree syncrep_yyfree
-
-    #define yytext syncrep_yytext
-    #define yyleng syncrep_yyleng
-    #define yyin syncrep_yyin
-    #define yyout syncrep_yyout
-    #define yy_flex_debug syncrep_yy_flex_debug
-    #define yylineno syncrep_yylineno
 
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
@@ -152,15 +103,9 @@ typedef unsigned int flex_uint32_t;
 #define UINT32_MAX             (4294967295U)
 #endif
 
-#ifndef SIZE_MAX
-#define SIZE_MAX               (~(size_t)0)
-#endif
-
 #endif /* ! C99 */
 
 #endif /* ! FLEXINT_H */
-
-/* begin standard C++ headers. */
 
 /* TODO: this is always defined, so inline it */
 #define yyconst const
@@ -174,26 +119,32 @@ typedef unsigned int flex_uint32_t;
 /* Returned upon end-of-file. */
 #define YY_NULL 0
 
-/* Promotes a possibly negative, possibly signed char to an
- *   integer in range [0..255] for use as an array index.
+/* Promotes a possibly negative, possibly signed char to an unsigned
+ * integer for use as an array index.  If the signed char is negative,
+ * we want to instead treat it as an 8-bit unsigned char, hence the
+ * double cast.
  */
-#define YY_SC_TO_UI(c) ((YY_CHAR) (c))
+#define YY_SC_TO_UI(c) ((unsigned int) (unsigned char) c)
 
 /* Enter a start condition.  This macro really ought to take a parameter,
  * but we do it the disgusting crufty way forced on us by the ()-less
  * definition of BEGIN.
  */
 #define BEGIN (yy_start) = 1 + 2 *
+
 /* Translate the current start state into a value that can be later handed
  * to BEGIN to return to the state.  The YYSTATE alias is for lex
  * compatibility.
  */
 #define YY_START (((yy_start) - 1) / 2)
 #define YYSTATE YY_START
+
 /* Action number for EOF rule of a given start state. */
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
+
 /* Special action meaning "start processing a new file". */
-#define YY_NEW_FILE yyrestart( yyin  )
+#define YY_NEW_FILE syncrep_yyrestart(syncrep_yyin  )
+
 #define YY_END_OF_BUFFER_CHAR 0
 
 /* Size of default input buffer. */
@@ -223,14 +174,14 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-extern int yyleng;
+extern int syncrep_yyleng;
 
-extern FILE *yyin, *yyout;
+extern FILE *syncrep_yyin, *syncrep_yyout;
 
 #define EOB_ACT_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
-    
+
     #define YY_LESS_LINENO(n)
     #define YY_LINENO_REWIND_TO(ptr)
     
@@ -238,15 +189,16 @@ extern FILE *yyin, *yyout;
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up syncrep_yytext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
 		*yy_cp = (yy_hold_char); \
 		YY_RESTORE_YY_MORE_OFFSET \
 		(yy_c_buf_p) = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
+		YY_DO_BEFORE_ACTION; /* set up syncrep_yytext again */ \
 		} \
 	while ( 0 )
+
 #define unput(c) yyunput( c, (yytext_ptr)  )
 
 #ifndef YY_STRUCT_YY_BUFFER_STATE
@@ -306,8 +258,8 @@ struct yy_buffer_state
 	 * possible backing-up.
 	 *
 	 * When we actually see the EOF, we change the status to "new"
-	 * (via yyrestart()), so that the user can continue scanning by
-	 * just pointing yyin at a new input file.
+	 * (via syncrep_yyrestart()), so that the user can continue scanning by
+	 * just pointing syncrep_yyin at a new input file.
 	 */
 #define YY_BUFFER_EOF_PENDING 2
 
@@ -328,101 +280,109 @@ static YY_BUFFER_STATE * yy_buffer_stack = NULL; /**< Stack as an array. */
 #define YY_CURRENT_BUFFER ( (yy_buffer_stack) \
                           ? (yy_buffer_stack)[(yy_buffer_stack_top)] \
                           : NULL)
+
 /* Same as previous macro, but useful when we know that the buffer stack is not
  * NULL or when we need an lvalue. For internal use only.
  */
 #define YY_CURRENT_BUFFER_LVALUE (yy_buffer_stack)[(yy_buffer_stack_top)]
 
-/* yy_hold_char holds the character lost when yytext is formed. */
+/* yy_hold_char holds the character lost when syncrep_yytext is formed. */
 static char yy_hold_char;
 static int yy_n_chars;		/* number of characters read into yy_ch_buf */
-int yyleng;
+int syncrep_yyleng;
 
 /* Points to current character in buffer. */
 static char *yy_c_buf_p = NULL;
 static int yy_init = 0;		/* whether we need to initialize */
 static int yy_start = 0;	/* start state number */
 
-/* Flag which is used to allow yywrap()'s to do buffer switches
- * instead of setting up a fresh yyin.  A bit of a hack ...
+/* Flag which is used to allow syncrep_yywrap()'s to do buffer switches
+ * instead of setting up a fresh syncrep_yyin.  A bit of a hack ...
  */
 static int yy_did_buffer_switch_on_eof;
 
-void yyrestart ( FILE *input_file  );
-void yy_switch_to_buffer ( YY_BUFFER_STATE new_buffer  );
-YY_BUFFER_STATE yy_create_buffer ( FILE *file, int size  );
-void yy_delete_buffer ( YY_BUFFER_STATE b  );
-void yy_flush_buffer ( YY_BUFFER_STATE b  );
-void yypush_buffer_state ( YY_BUFFER_STATE new_buffer  );
-void yypop_buffer_state ( void );
+void syncrep_yyrestart (FILE *input_file  );
+void syncrep_yy_switch_to_buffer (YY_BUFFER_STATE new_buffer  );
+YY_BUFFER_STATE syncrep_yy_create_buffer (FILE *file,int size  );
+void syncrep_yy_delete_buffer (YY_BUFFER_STATE b  );
+void syncrep_yy_flush_buffer (YY_BUFFER_STATE b  );
+void syncrep_yypush_buffer_state (YY_BUFFER_STATE new_buffer  );
+void syncrep_yypop_buffer_state (void );
 
-static void yyensure_buffer_stack ( void );
-static void yy_load_buffer_state ( void );
-static void yy_init_buffer ( YY_BUFFER_STATE b, FILE *file  );
-#define YY_FLUSH_BUFFER yy_flush_buffer( YY_CURRENT_BUFFER )
+static void syncrep_yyensure_buffer_stack (void );
+static void syncrep_yy_load_buffer_state (void );
+static void syncrep_yy_init_buffer (YY_BUFFER_STATE b,FILE *file  );
 
-YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size  );
-YY_BUFFER_STATE yy_scan_string ( const char *yy_str  );
-YY_BUFFER_STATE yy_scan_bytes ( const char *bytes, int len  );
+#define YY_FLUSH_BUFFER syncrep_yy_flush_buffer(YY_CURRENT_BUFFER )
 
-void *yyalloc ( yy_size_t  );
-void *yyrealloc ( void *, yy_size_t  );
-void yyfree ( void *  );
+YY_BUFFER_STATE syncrep_yy_scan_buffer (char *base,yy_size_t size  );
+YY_BUFFER_STATE syncrep_yy_scan_string (yyconst char *yy_str  );
+YY_BUFFER_STATE syncrep_yy_scan_bytes (yyconst char *bytes,int len  );
 
-#define yy_new_buffer yy_create_buffer
+void *syncrep_yyalloc (yy_size_t  );
+void *syncrep_yyrealloc (void *,yy_size_t  );
+void syncrep_yyfree (void *  );
+
+#define yy_new_buffer syncrep_yy_create_buffer
+
 #define yy_set_interactive(is_interactive) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){ \
-        yyensure_buffer_stack (); \
+        syncrep_yyensure_buffer_stack (); \
 		YY_CURRENT_BUFFER_LVALUE =    \
-            yy_create_buffer( yyin, YY_BUF_SIZE ); \
+            syncrep_yy_create_buffer(syncrep_yyin,YY_BUF_SIZE ); \
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
 	}
+
 #define yy_set_bol(at_bol) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){\
-        yyensure_buffer_stack (); \
+        syncrep_yyensure_buffer_stack (); \
 		YY_CURRENT_BUFFER_LVALUE =    \
-            yy_create_buffer( yyin, YY_BUF_SIZE ); \
+            syncrep_yy_create_buffer(syncrep_yyin,YY_BUF_SIZE ); \
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
 	}
+
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
 
 #define syncrep_yywrap() (/*CONSTCOND*/1)
 #define YY_SKIP_YYWRAP
-typedef flex_uint8_t YY_CHAR;
 
-FILE *yyin = NULL, *yyout = NULL;
+typedef unsigned char YY_CHAR;
+
+FILE *syncrep_yyin = NULL, *syncrep_yyout = NULL;
 
 typedef int yy_state_type;
 
-extern int yylineno;
-int yylineno = 1;
+extern int syncrep_yylineno;
 
-extern char *yytext;
+int syncrep_yylineno = 1;
+
+extern char *syncrep_yytext;
 #ifdef yytext_ptr
 #undef yytext_ptr
 #endif
-#define yytext_ptr yytext
+#define yytext_ptr syncrep_yytext
 
-static yy_state_type yy_get_previous_state ( void );
-static yy_state_type yy_try_NUL_trans ( yy_state_type current_state  );
-static int yy_get_next_buffer ( void );
-static void yynoreturn yy_fatal_error ( const char* msg  );
+static yy_state_type yy_get_previous_state (void );
+static yy_state_type yy_try_NUL_trans (yy_state_type current_state  );
+static int yy_get_next_buffer (void );
+static void yynoreturn yy_fatal_error (yyconst char* msg  );
 
 /* Done after the current pattern has been matched and before the
- * corresponding action - sets up yytext.
+ * corresponding action - sets up syncrep_yytext.
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (int) (yy_cp - yy_bp); \
+	syncrep_yyleng = (int) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
+
 #define YY_NUM_RULES 15
 #define YY_END_OF_BUFFER 16
 /* This struct is not used in this scanner,
@@ -432,7 +392,7 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[32] =
+static yyconst flex_int16_t yy_accept[32] =
     {   0,
         0,    0,    0,    0,   16,   14,    1,    1,    4,   12,
        13,   10,   11,    9,    8,    8,    8,    6,    7,    1,
@@ -440,7 +400,7 @@ static const flex_int16_t yy_accept[32] =
         0
     } ;
 
-static const YY_CHAR yy_ec[256] =
+static yyconst YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         2,    2,    2,    1,    1,    1,    1,    1,    1,    1,
@@ -472,13 +432,13 @@ static const YY_CHAR yy_ec[256] =
        12,   12,   12,   12,   12
     } ;
 
-static const YY_CHAR yy_meta[20] =
+static yyconst YY_CHAR yy_meta[20] =
     {   0,
         1,    1,    1,    2,    3,    1,    1,    1,    1,    3,
         3,    3,    3,    3,    3,    3,    3,    3,    3
     } ;
 
-static const flex_int16_t yy_base[35] =
+static yyconst flex_uint16_t yy_base[35] =
     {   0,
         0,    0,   39,   38,   41,   44,   18,   20,   44,   44,
        44,   44,   44,   30,   24,    0,   24,    0,   33,   22,
@@ -486,7 +446,7 @@ static const flex_int16_t yy_base[35] =
        44,   25,   27,   28
     } ;
 
-static const flex_int16_t yy_def[35] =
+static yyconst flex_int16_t yy_def[35] =
     {   0,
        31,    1,   32,   32,   31,   31,   31,   31,   31,   31,
        31,   31,   31,   31,   33,   33,   33,   34,   31,   31,
@@ -494,7 +454,7 @@ static const flex_int16_t yy_def[35] =
         0,   31,   31,   31
     } ;
 
-static const flex_int16_t yy_nxt[64] =
+static yyconst flex_uint16_t yy_nxt[64] =
     {   0,
         6,    7,    8,    9,    6,   10,   11,   12,   13,   14,
        15,   16,   17,   16,   16,   16,   16,   16,   16,   20,
@@ -505,7 +465,7 @@ static const flex_int16_t yy_nxt[64] =
        31,   31,   31
     } ;
 
-static const flex_int16_t yy_chk[64] =
+static yyconst flex_int16_t yy_chk[64] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    7,
@@ -519,8 +479,8 @@ static const flex_int16_t yy_chk[64] =
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
 
-extern int yy_flex_debug;
-int yy_flex_debug = 0;
+extern int syncrep_yy_flex_debug;
+int syncrep_yy_flex_debug = 0;
 
 /* The intent behind this definition is that it'll catch
  * any uses of REJECT which flex missed.
@@ -529,9 +489,9 @@ int yy_flex_debug = 0;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-char *yytext;
-#line 1 "src/backend/replication/syncrep_scanner.l"
-#line 2 "src/backend/replication/syncrep_scanner.l"
+char *syncrep_yytext;
+#line 1 "syncrep_scanner.l"
+#line 2 "syncrep_scanner.l"
 /*-------------------------------------------------------------------------
  *
  * syncrep_scanner.l
@@ -567,13 +527,12 @@ static StringInfoData xdbuf;
 
 /* LCOV_EXCL_START */
 
-#line 570 "src/backend/replication/syncrep_scanner.c"
 #define YY_NO_INPUT 1
 /*
  * <xd> delimited identifiers (double-quoted identifiers)
  */
 
-#line 576 "src/backend/replication/syncrep_scanner.c"
+#line 536 "syncrep_scanner.c"
 
 #define INITIAL 0
 #define xd 1
@@ -590,36 +549,36 @@ static StringInfoData xdbuf;
 #define YY_EXTRA_TYPE void *
 #endif
 
-static int yy_init_globals ( void );
+static int yy_init_globals (void );
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
-int yylex_destroy ( void );
+int syncrep_yylex_destroy (void );
 
-int yyget_debug ( void );
+int syncrep_yyget_debug (void );
 
-void yyset_debug ( int debug_flag  );
+void syncrep_yyset_debug (int debug_flag  );
 
-YY_EXTRA_TYPE yyget_extra ( void );
+YY_EXTRA_TYPE syncrep_yyget_extra (void );
 
-void yyset_extra ( YY_EXTRA_TYPE user_defined  );
+void syncrep_yyset_extra (YY_EXTRA_TYPE user_defined  );
 
-FILE *yyget_in ( void );
+FILE *syncrep_yyget_in (void );
 
-void yyset_in  ( FILE * _in_str  );
+void syncrep_yyset_in  (FILE * _in_str  );
 
-FILE *yyget_out ( void );
+FILE *syncrep_yyget_out (void );
 
-void yyset_out  ( FILE * _out_str  );
+void syncrep_yyset_out  (FILE * _out_str  );
 
-			int yyget_leng ( void );
+			int syncrep_yyget_leng (void );
 
-char *yyget_text ( void );
+char *syncrep_yyget_text (void );
 
-int yyget_lineno ( void );
+int syncrep_yyget_lineno (void );
 
-void yyset_lineno ( int _line_number  );
+void syncrep_yyset_lineno (int _line_number  );
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -627,9 +586,9 @@ void yyset_lineno ( int _line_number  );
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int yywrap ( void );
+extern "C" int syncrep_yywrap (void );
 #else
-extern int yywrap ( void );
+extern int syncrep_yywrap (void );
 #endif
 #endif
 
@@ -638,18 +597,19 @@ extern int yywrap ( void );
 #endif
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy ( char *, const char *, int );
+static void yy_flex_strncpy (char *,yyconst char *,int );
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen ( const char * );
+static int yy_flex_strlen (yyconst char * );
 #endif
 
 #ifndef YY_NO_INPUT
+
 #ifdef __cplusplus
-static int yyinput ( void );
+static int yyinput (void );
 #else
-static int input ( void );
+static int input (void );
 #endif
 
 #endif
@@ -669,7 +629,7 @@ static int input ( void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO do { if (fwrite( yytext, (size_t) yyleng, 1, yyout )) {} } while (0)
+#define ECHO do { if (fwrite( syncrep_yytext, (size_t) syncrep_yyleng, 1, syncrep_yyout )) {} } while (0)
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -680,20 +640,20 @@ static int input ( void );
 	if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
 		{ \
 		int c = '*'; \
-		int n; \
+		size_t n; \
 		for ( n = 0; n < max_size && \
-			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
+			     (c = getc( syncrep_yyin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
 		if ( c == '\n' ) \
 			buf[n++] = (char) c; \
-		if ( c == EOF && ferror( yyin ) ) \
+		if ( c == EOF && ferror( syncrep_yyin ) ) \
 			YY_FATAL_ERROR( "input in flex scanner failed" ); \
 		result = n; \
 		} \
 	else \
 		{ \
 		errno=0; \
-		while ( (result = (int) fread(buf, 1, (yy_size_t) max_size, yyin)) == 0 && ferror(yyin)) \
+		while ( (result = (int) fread(buf, 1, max_size, syncrep_yyin))==0 && ferror(syncrep_yyin)) \
 			{ \
 			if( errno != EINTR) \
 				{ \
@@ -701,7 +661,7 @@ static int input ( void );
 				break; \
 				} \
 			errno=0; \
-			clearerr(yyin); \
+			clearerr(syncrep_yyin); \
 			} \
 		}\
 \
@@ -734,12 +694,12 @@ static int input ( void );
 #ifndef YY_DECL
 #define YY_DECL_IS_OURS 1
 
-extern int yylex (void);
+extern int syncrep_yylex (void);
 
-#define YY_DECL int yylex (void)
+#define YY_DECL int syncrep_yylex (void)
 #endif /* !YY_DECL */
 
-/* Code executed at the beginning of each rule, after yytext and yyleng
+/* Code executed at the beginning of each rule, after syncrep_yytext and syncrep_yyleng
  * have been set up.
  */
 #ifndef YY_USER_ACTION
@@ -773,31 +733,31 @@ YY_DECL
 		if ( ! (yy_start) )
 			(yy_start) = 1;	/* first start state */
 
-		if ( ! yyin )
-			yyin = stdin;
+		if ( ! syncrep_yyin )
+			syncrep_yyin = stdin;
 
-		if ( ! yyout )
-			yyout = stdout;
+		if ( ! syncrep_yyout )
+			syncrep_yyout = stdout;
 
 		if ( ! YY_CURRENT_BUFFER ) {
-			yyensure_buffer_stack ();
+			syncrep_yyensure_buffer_stack ();
 			YY_CURRENT_BUFFER_LVALUE =
-				yy_create_buffer( yyin, YY_BUF_SIZE );
+				syncrep_yy_create_buffer(syncrep_yyin,YY_BUF_SIZE );
 		}
 
-		yy_load_buffer_state(  );
+		syncrep_yy_load_buffer_state( );
 		}
 
 	{
-#line 66 "src/backend/replication/syncrep_scanner.l"
+#line 66 "syncrep_scanner.l"
 
-#line 794 "src/backend/replication/syncrep_scanner.c"
+#line 755 "syncrep_scanner.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
 		yy_cp = (yy_c_buf_p);
 
-		/* Support of yytext. */
+		/* Support of syncrep_yytext. */
 		*yy_cp = (yy_hold_char);
 
 		/* yy_bp points to the position in yy_ch_buf of the start of
@@ -819,9 +779,9 @@ yy_match:
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
 				if ( yy_current_state >= 32 )
-					yy_c = yy_meta[yy_c];
+					yy_c = yy_meta[(unsigned int) yy_c];
 				}
-			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
+			yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 			++yy_cp;
 			}
 		while ( yy_current_state != 31 );
@@ -847,23 +807,23 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 67 "src/backend/replication/syncrep_scanner.l"
+#line 67 "syncrep_scanner.l"
 { /* ignore */ }
 	YY_BREAK
 /* brute-force case insensitivity is safer than relying on flex -i */
 case 2:
 YY_RULE_SETUP
-#line 71 "src/backend/replication/syncrep_scanner.l"
+#line 71 "syncrep_scanner.l"
 { return ANY; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 72 "src/backend/replication/syncrep_scanner.l"
+#line 72 "syncrep_scanner.l"
 { return FIRST; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 74 "src/backend/replication/syncrep_scanner.l"
+#line 74 "syncrep_scanner.l"
 {
 				initStringInfo(&xdbuf);
 				BEGIN(xd);
@@ -871,7 +831,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 78 "src/backend/replication/syncrep_scanner.l"
+#line 78 "syncrep_scanner.l"
 {
 				appendStringInfoChar(&xdbuf, '"');
 		}
@@ -879,14 +839,14 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 81 "src/backend/replication/syncrep_scanner.l"
+#line 81 "syncrep_scanner.l"
 {
-				appendStringInfoString(&xdbuf, yytext);
+				appendStringInfoString(&xdbuf, syncrep_yytext);
 		}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 84 "src/backend/replication/syncrep_scanner.l"
+#line 84 "syncrep_scanner.l"
 {
 				yylval.str = xdbuf.data;
 				xdbuf.data = NULL;
@@ -895,7 +855,7 @@ YY_RULE_SETUP
 		}
 	YY_BREAK
 case YY_STATE_EOF(xd):
-#line 90 "src/backend/replication/syncrep_scanner.l"
+#line 90 "syncrep_scanner.l"
 {
 				yyerror("unterminated quoted identifier");
 				return JUNK;
@@ -903,23 +863,23 @@ case YY_STATE_EOF(xd):
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 95 "src/backend/replication/syncrep_scanner.l"
+#line 95 "syncrep_scanner.l"
 {
-				yylval.str = pstrdup(yytext);
+				yylval.str = pstrdup(syncrep_yytext);
 				return NAME;
 		}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 100 "src/backend/replication/syncrep_scanner.l"
+#line 100 "syncrep_scanner.l"
 {
-				yylval.str = pstrdup(yytext);
+				yylval.str = pstrdup(syncrep_yytext);
 				return NUM;
 		}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 105 "src/backend/replication/syncrep_scanner.l"
+#line 105 "syncrep_scanner.l"
 {
 				yylval.str = "*";
 				return NAME;
@@ -927,30 +887,30 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 110 "src/backend/replication/syncrep_scanner.l"
+#line 110 "syncrep_scanner.l"
 { return ','; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 111 "src/backend/replication/syncrep_scanner.l"
+#line 111 "syncrep_scanner.l"
 { return '('; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 112 "src/backend/replication/syncrep_scanner.l"
+#line 112 "syncrep_scanner.l"
 { return ')'; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 114 "src/backend/replication/syncrep_scanner.l"
+#line 114 "syncrep_scanner.l"
 { return JUNK; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 115 "src/backend/replication/syncrep_scanner.l"
+#line 115 "syncrep_scanner.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 953 "src/backend/replication/syncrep_scanner.c"
+#line 914 "syncrep_scanner.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -967,15 +927,15 @@ case YY_STATE_EOF(INITIAL):
 			{
 			/* We're scanning a new file or input source.  It's
 			 * possible that this happened because the user
-			 * just pointed yyin at a new source and called
-			 * yylex().  If so, then we have to assure
+			 * just pointed syncrep_yyin at a new source and called
+			 * syncrep_yylex().  If so, then we have to assure
 			 * consistency between YY_CURRENT_BUFFER and our
 			 * globals.  Here is the right place to do so, because
 			 * this is the first action (other than possibly a
 			 * back-up) that will match for the new input source.
 			 */
 			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
+			YY_CURRENT_BUFFER_LVALUE->yy_input_file = syncrep_yyin;
 			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -1029,11 +989,11 @@ case YY_STATE_EOF(INITIAL):
 				{
 				(yy_did_buffer_switch_on_eof) = 0;
 
-				if ( yywrap(  ) )
+				if ( syncrep_yywrap( ) )
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
-					 * yytext, we can now set up
+					 * syncrep_yytext, we can now set up
 					 * yy_c_buf_p so that if some total
 					 * hoser (like flex itself) wants to
 					 * call the scanner after we return the
@@ -1083,7 +1043,7 @@ case YY_STATE_EOF(INITIAL):
 	} /* end of action switch */
 		} /* end of scanning one token */
 	} /* end of user's declarations */
-} /* end of yylex */
+} /* end of syncrep_yylex */
 
 /* yy_get_next_buffer - try to read in a new buffer
  *
@@ -1161,8 +1121,7 @@ static int yy_get_next_buffer (void)
 
 				b->yy_ch_buf = (char *)
 					/* Include room in for 2 EOB chars. */
-					yyrealloc( (void *) b->yy_ch_buf,
-							 (yy_size_t) (b->yy_buf_size + 2)  );
+					syncrep_yyrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
 				}
 			else
 				/* Can't grow it, we don't own it. */
@@ -1194,7 +1153,7 @@ static int yy_get_next_buffer (void)
 		if ( number_to_move == YY_MORE_ADJ )
 			{
 			ret_val = EOB_ACT_END_OF_FILE;
-			yyrestart( yyin  );
+			syncrep_yyrestart(syncrep_yyin  );
 			}
 
 		else
@@ -1211,8 +1170,7 @@ static int yy_get_next_buffer (void)
 	if (((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
 		int new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
-		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) yyrealloc(
-			(void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf, (yy_size_t) new_size  );
+		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) syncrep_yyrealloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size  );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
 			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
 	}
@@ -1247,9 +1205,9 @@ static int yy_get_next_buffer (void)
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
 			if ( yy_current_state >= 32 )
-				yy_c = yy_meta[yy_c];
+				yy_c = yy_meta[(unsigned int) yy_c];
 			}
-		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
+		yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 		}
 
 	return yy_current_state;
@@ -1275,9 +1233,9 @@ static int yy_get_next_buffer (void)
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
 		if ( yy_current_state >= 32 )
-			yy_c = yy_meta[yy_c];
+			yy_c = yy_meta[(unsigned int) yy_c];
 		}
-	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
+	yy_current_state = yy_nxt[yy_base[yy_current_state] + (flex_int16_t) yy_c];
 	yy_is_jam = (yy_current_state == 31);
 
 		return yy_is_jam ? 0 : yy_current_state;
@@ -1311,7 +1269,7 @@ static int yy_get_next_buffer (void)
 
 		else
 			{ /* need more input */
-			int offset = (int) ((yy_c_buf_p) - (yytext_ptr));
+			int offset = (yy_c_buf_p) - (yytext_ptr);
 			++(yy_c_buf_p);
 
 			switch ( yy_get_next_buffer(  ) )
@@ -1328,13 +1286,13 @@ static int yy_get_next_buffer (void)
 					 */
 
 					/* Reset buffer status. */
-					yyrestart( yyin );
+					syncrep_yyrestart(syncrep_yyin );
 
 					/*FALLTHROUGH*/
 
 				case EOB_ACT_END_OF_FILE:
 					{
-					if ( yywrap(  ) )
+					if ( syncrep_yywrap( ) )
 						return 0;
 
 					if ( ! (yy_did_buffer_switch_on_eof) )
@@ -1354,7 +1312,7 @@ static int yy_get_next_buffer (void)
 		}
 
 	c = *(unsigned char *) (yy_c_buf_p);	/* cast for 8-bit char's */
-	*(yy_c_buf_p) = '\0';	/* preserve yytext */
+	*(yy_c_buf_p) = '\0';	/* preserve syncrep_yytext */
 	(yy_hold_char) = *++(yy_c_buf_p);
 
 	return c;
@@ -1366,32 +1324,32 @@ static int yy_get_next_buffer (void)
  * 
  * @note This function does not reset the start condition to @c INITIAL .
  */
-    void yyrestart  (FILE * input_file )
+    void syncrep_yyrestart  (FILE * input_file )
 {
     
 	if ( ! YY_CURRENT_BUFFER ){
-        yyensure_buffer_stack ();
+        syncrep_yyensure_buffer_stack ();
 		YY_CURRENT_BUFFER_LVALUE =
-            yy_create_buffer( yyin, YY_BUF_SIZE );
+            syncrep_yy_create_buffer(syncrep_yyin,YY_BUF_SIZE );
 	}
 
-	yy_init_buffer( YY_CURRENT_BUFFER, input_file );
-	yy_load_buffer_state(  );
+	syncrep_yy_init_buffer(YY_CURRENT_BUFFER,input_file );
+	syncrep_yy_load_buffer_state( );
 }
 
 /** Switch to a different input buffer.
  * @param new_buffer The new input buffer.
  * 
  */
-    void yy_switch_to_buffer  (YY_BUFFER_STATE  new_buffer )
+    void syncrep_yy_switch_to_buffer  (YY_BUFFER_STATE  new_buffer )
 {
     
 	/* TODO. We should be able to replace this entire function body
 	 * with
-	 *		yypop_buffer_state();
-	 *		yypush_buffer_state(new_buffer);
+	 *		syncrep_yypop_buffer_state();
+	 *		syncrep_yypush_buffer_state(new_buffer);
      */
-	yyensure_buffer_stack ();
+	syncrep_yyensure_buffer_stack ();
 	if ( YY_CURRENT_BUFFER == new_buffer )
 		return;
 
@@ -1404,21 +1362,21 @@ static int yy_get_next_buffer (void)
 		}
 
 	YY_CURRENT_BUFFER_LVALUE = new_buffer;
-	yy_load_buffer_state(  );
+	syncrep_yy_load_buffer_state( );
 
 	/* We don't actually know whether we did this switch during
-	 * EOF (yywrap()) processing, but the only time this flag
-	 * is looked at is after yywrap() is called, so it's safe
+	 * EOF (syncrep_yywrap()) processing, but the only time this flag
+	 * is looked at is after syncrep_yywrap() is called, so it's safe
 	 * to go ahead and always set it.
 	 */
 	(yy_did_buffer_switch_on_eof) = 1;
 }
 
-static void yy_load_buffer_state  (void)
+static void syncrep_yy_load_buffer_state  (void)
 {
     	(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
 	(yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-	yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
+	syncrep_yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
 	(yy_hold_char) = *(yy_c_buf_p);
 }
 
@@ -1428,35 +1386,35 @@ static void yy_load_buffer_state  (void)
  * 
  * @return the allocated buffer state.
  */
-    YY_BUFFER_STATE yy_create_buffer  (FILE * file, int  size )
+    YY_BUFFER_STATE syncrep_yy_create_buffer  (FILE * file, int  size )
 {
 	YY_BUFFER_STATE b;
     
-	b = (YY_BUFFER_STATE) yyalloc( sizeof( struct yy_buffer_state )  );
+	b = (YY_BUFFER_STATE) syncrep_yyalloc(sizeof( struct yy_buffer_state )  );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in syncrep_yy_create_buffer()" );
 
-	b->yy_buf_size = size;
+	b->yy_buf_size = (yy_size_t)size;
 
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
 	 */
-	b->yy_ch_buf = (char *) yyalloc( (yy_size_t) (b->yy_buf_size + 2)  );
+	b->yy_ch_buf = (char *) syncrep_yyalloc(b->yy_buf_size + 2  );
 	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in syncrep_yy_create_buffer()" );
 
 	b->yy_is_our_buffer = 1;
 
-	yy_init_buffer( b, file );
+	syncrep_yy_init_buffer(b,file );
 
 	return b;
 }
 
 /** Destroy the buffer.
- * @param b a buffer created with yy_create_buffer()
+ * @param b a buffer created with syncrep_yy_create_buffer()
  * 
  */
-    void yy_delete_buffer (YY_BUFFER_STATE  b )
+    void syncrep_yy_delete_buffer (YY_BUFFER_STATE  b )
 {
     
 	if ( ! b )
@@ -1466,27 +1424,27 @@ static void yy_load_buffer_state  (void)
 		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
 	if ( b->yy_is_our_buffer )
-		yyfree( (void *) b->yy_ch_buf  );
+		syncrep_yyfree((void *) b->yy_ch_buf  );
 
-	yyfree( (void *) b  );
+	syncrep_yyfree((void *) b  );
 }
 
 /* Initializes or reinitializes a buffer.
  * This function is sometimes called more than once on the same buffer,
- * such as during a yyrestart() or at EOF.
+ * such as during a syncrep_yyrestart() or at EOF.
  */
-    static void yy_init_buffer  (YY_BUFFER_STATE  b, FILE * file )
+    static void syncrep_yy_init_buffer  (YY_BUFFER_STATE  b, FILE * file )
 
 {
 	int oerrno = errno;
     
-	yy_flush_buffer( b );
+	syncrep_yy_flush_buffer(b );
 
 	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
 
-    /* If b is the current buffer, then yy_init_buffer was _probably_
-     * called from yyrestart() or through yy_get_next_buffer.
+    /* If b is the current buffer, then syncrep_yy_init_buffer was _probably_
+     * called from syncrep_yyrestart() or through yy_get_next_buffer.
      * In that case, we don't want to reset the lineno or column.
      */
     if (b != YY_CURRENT_BUFFER){
@@ -1503,7 +1461,7 @@ static void yy_load_buffer_state  (void)
  * @param b the buffer state to be flushed, usually @c YY_CURRENT_BUFFER.
  * 
  */
-    void yy_flush_buffer (YY_BUFFER_STATE  b )
+    void syncrep_yy_flush_buffer (YY_BUFFER_STATE  b )
 {
     	if ( ! b )
 		return;
@@ -1523,7 +1481,7 @@ static void yy_load_buffer_state  (void)
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
 	if ( b == YY_CURRENT_BUFFER )
-		yy_load_buffer_state(  );
+		syncrep_yy_load_buffer_state( );
 }
 
 /** Pushes the new state onto the stack. The new state becomes
@@ -1532,14 +1490,14 @@ static void yy_load_buffer_state  (void)
  *  @param new_buffer The new state.
  *  
  */
-void yypush_buffer_state (YY_BUFFER_STATE new_buffer )
+void syncrep_yypush_buffer_state (YY_BUFFER_STATE new_buffer )
 {
     	if (new_buffer == NULL)
 		return;
 
-	yyensure_buffer_stack();
+	syncrep_yyensure_buffer_stack();
 
-	/* This block is copied from yy_switch_to_buffer. */
+	/* This block is copied from syncrep_yy_switch_to_buffer. */
 	if ( YY_CURRENT_BUFFER )
 		{
 		/* Flush out information for old buffer. */
@@ -1553,8 +1511,8 @@ void yypush_buffer_state (YY_BUFFER_STATE new_buffer )
 		(yy_buffer_stack_top)++;
 	YY_CURRENT_BUFFER_LVALUE = new_buffer;
 
-	/* copied from yy_switch_to_buffer. */
-	yy_load_buffer_state(  );
+	/* copied from syncrep_yy_switch_to_buffer. */
+	syncrep_yy_load_buffer_state( );
 	(yy_did_buffer_switch_on_eof) = 1;
 }
 
@@ -1562,18 +1520,18 @@ void yypush_buffer_state (YY_BUFFER_STATE new_buffer )
  *  The next element becomes the new top.
  *  
  */
-void yypop_buffer_state (void)
+void syncrep_yypop_buffer_state (void)
 {
     	if (!YY_CURRENT_BUFFER)
 		return;
 
-	yy_delete_buffer(YY_CURRENT_BUFFER );
+	syncrep_yy_delete_buffer(YY_CURRENT_BUFFER );
 	YY_CURRENT_BUFFER_LVALUE = NULL;
 	if ((yy_buffer_stack_top) > 0)
 		--(yy_buffer_stack_top);
 
 	if (YY_CURRENT_BUFFER) {
-		yy_load_buffer_state(  );
+		syncrep_yy_load_buffer_state( );
 		(yy_did_buffer_switch_on_eof) = 1;
 	}
 }
@@ -1581,9 +1539,9 @@ void yypop_buffer_state (void)
 /* Allocates the stack if it does not exist.
  *  Guarantees space for at least one push.
  */
-static void yyensure_buffer_stack (void)
+static void syncrep_yyensure_buffer_stack (void)
 {
-	yy_size_t num_to_alloc;
+	int num_to_alloc;
     
 	if (!(yy_buffer_stack)) {
 
@@ -1592,11 +1550,11 @@ static void yyensure_buffer_stack (void)
 		 * immediate realloc on the next call.
          */
       num_to_alloc = 1; /* After all that talk, this was set to 1 anyways... */
-		(yy_buffer_stack) = (struct yy_buffer_state**)yyalloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)syncrep_yyalloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
 		if ( ! (yy_buffer_stack) )
-			YY_FATAL_ERROR( "out of dynamic memory in yyensure_buffer_stack()" );
+			YY_FATAL_ERROR( "out of dynamic memory in syncrep_yyensure_buffer_stack()" );
 
 		memset((yy_buffer_stack), 0, num_to_alloc * sizeof(struct yy_buffer_state*));
 
@@ -1611,12 +1569,12 @@ static void yyensure_buffer_stack (void)
 		yy_size_t grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = (yy_buffer_stack_max) + grow_size;
-		(yy_buffer_stack) = (struct yy_buffer_state**)yyrealloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)syncrep_yyrealloc
 								((yy_buffer_stack),
 								num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
 		if ( ! (yy_buffer_stack) )
-			YY_FATAL_ERROR( "out of dynamic memory in yyensure_buffer_stack()" );
+			YY_FATAL_ERROR( "out of dynamic memory in syncrep_yyensure_buffer_stack()" );
 
 		/* zero only the new slots.*/
 		memset((yy_buffer_stack) + (yy_buffer_stack_max), 0, grow_size * sizeof(struct yy_buffer_state*));
@@ -1630,7 +1588,7 @@ static void yyensure_buffer_stack (void)
  * 
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )
+YY_BUFFER_STATE syncrep_yy_scan_buffer  (char * base, yy_size_t  size )
 {
 	YY_BUFFER_STATE b;
     
@@ -1640,11 +1598,11 @@ YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )
 		/* They forgot to leave room for the EOB's. */
 		return NULL;
 
-	b = (YY_BUFFER_STATE) yyalloc( sizeof( struct yy_buffer_state )  );
+	b = (YY_BUFFER_STATE) syncrep_yyalloc(sizeof( struct yy_buffer_state )  );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in syncrep_yy_scan_buffer()" );
 
-	b->yy_buf_size = (int) (size - 2);	/* "- 2" to take care of EOB's */
+	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
 	b->yy_buf_pos = b->yy_ch_buf = base;
 	b->yy_is_our_buffer = 0;
 	b->yy_input_file = NULL;
@@ -1654,33 +1612,33 @@ YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )
 	b->yy_fill_buffer = 0;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
-	yy_switch_to_buffer( b  );
+	syncrep_yy_switch_to_buffer(b  );
 
 	return b;
 }
 
-/** Setup the input buffer state to scan a string. The next call to yylex() will
+/** Setup the input buffer state to scan a string. The next call to syncrep_yylex() will
  * scan from a @e copy of @a str.
  * @param yystr a NUL-terminated string to scan
  * 
  * @return the newly allocated buffer state object.
  * @note If you want to scan bytes that may contain NUL values, then use
- *       yy_scan_bytes() instead.
+ *       syncrep_yy_scan_bytes() instead.
  */
-YY_BUFFER_STATE yy_scan_string (const char * yystr )
+YY_BUFFER_STATE syncrep_yy_scan_string (yyconst char * yystr )
 {
     
-	return yy_scan_bytes( yystr, (int) strlen(yystr) );
+	return syncrep_yy_scan_bytes(yystr,(int) strlen(yystr) );
 }
 
-/** Setup the input buffer state to scan the given bytes. The next call to yylex() will
+/** Setup the input buffer state to scan the given bytes. The next call to syncrep_yylex() will
  * scan from a @e copy of @a bytes.
  * @param yybytes the byte buffer to scan
  * @param _yybytes_len the number of bytes in the buffer pointed to by @a bytes.
  * 
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, int  _yybytes_len )
+YY_BUFFER_STATE syncrep_yy_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
 {
 	YY_BUFFER_STATE b;
 	char *buf;
@@ -1689,18 +1647,18 @@ YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, int  _yybytes_len )
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = (yy_size_t) (_yybytes_len + 2);
-	buf = (char *) yyalloc( n  );
+	buf = (char *) syncrep_yyalloc(n  );
 	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_bytes()" );
+		YY_FATAL_ERROR( "out of dynamic memory in syncrep_yy_scan_bytes()" );
 
 	for ( i = 0; i < _yybytes_len; ++i )
 		buf[i] = yybytes[i];
 
 	buf[_yybytes_len] = buf[_yybytes_len+1] = YY_END_OF_BUFFER_CHAR;
 
-	b = yy_scan_buffer( buf, n );
+	b = syncrep_yy_scan_buffer(buf,n );
 	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in yy_scan_bytes()" );
+		YY_FATAL_ERROR( "bad buffer in syncrep_yy_scan_bytes()" );
 
 	/* It's okay to grow etc. this buffer, and we should throw it
 	 * away when we're done.
@@ -1714,9 +1672,9 @@ YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, int  _yybytes_len )
 #define YY_EXIT_FAILURE 2
 #endif
 
-static void yynoreturn yy_fatal_error (const char* msg )
+static void yynoreturn yy_fatal_error (yyconst char* msg )
 {
-			fprintf( stderr, "%s\n", msg );
+			(void) fprintf( stderr, "%s\n", msg );
 	exit( YY_EXIT_FAILURE );
 }
 
@@ -1726,14 +1684,14 @@ static void yynoreturn yy_fatal_error (const char* msg )
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up syncrep_yytext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		yytext[yyleng] = (yy_hold_char); \
-		(yy_c_buf_p) = yytext + yyless_macro_arg; \
+		syncrep_yytext[syncrep_yyleng] = (yy_hold_char); \
+		(yy_c_buf_p) = syncrep_yytext + yyless_macro_arg; \
 		(yy_hold_char) = *(yy_c_buf_p); \
 		*(yy_c_buf_p) = '\0'; \
-		yyleng = yyless_macro_arg; \
+		syncrep_yyleng = yyless_macro_arg; \
 		} \
 	while ( 0 )
 
@@ -1742,85 +1700,85 @@ static void yynoreturn yy_fatal_error (const char* msg )
 /** Get the current line number.
  * 
  */
-int yyget_lineno  (void)
+int syncrep_yyget_lineno  (void)
 {
     
-    return yylineno;
+    return syncrep_yylineno;
 }
 
 /** Get the input stream.
  * 
  */
-FILE *yyget_in  (void)
+FILE *syncrep_yyget_in  (void)
 {
-        return yyin;
+        return syncrep_yyin;
 }
 
 /** Get the output stream.
  * 
  */
-FILE *yyget_out  (void)
+FILE *syncrep_yyget_out  (void)
 {
-        return yyout;
+        return syncrep_yyout;
 }
 
 /** Get the length of the current token.
  * 
  */
-int yyget_leng  (void)
+int syncrep_yyget_leng  (void)
 {
-        return yyleng;
+        return syncrep_yyleng;
 }
 
 /** Get the current token.
  * 
  */
 
-char *yyget_text  (void)
+char *syncrep_yyget_text  (void)
 {
-        return yytext;
+        return syncrep_yytext;
 }
 
 /** Set the current line number.
  * @param _line_number line number
  * 
  */
-void yyset_lineno (int  _line_number )
+void syncrep_yyset_lineno (int  _line_number )
 {
     
-    yylineno = _line_number;
+    syncrep_yylineno = _line_number;
 }
 
 /** Set the input stream. This does not discard the current
  * input buffer.
  * @param _in_str A readable stream.
  * 
- * @see yy_switch_to_buffer
+ * @see syncrep_yy_switch_to_buffer
  */
-void yyset_in (FILE *  _in_str )
+void syncrep_yyset_in (FILE *  _in_str )
 {
-        yyin = _in_str ;
+        syncrep_yyin = _in_str ;
 }
 
-void yyset_out (FILE *  _out_str )
+void syncrep_yyset_out (FILE *  _out_str )
 {
-        yyout = _out_str ;
+        syncrep_yyout = _out_str ;
 }
 
-int yyget_debug  (void)
+int syncrep_yyget_debug  (void)
 {
-        return yy_flex_debug;
+        return syncrep_yy_flex_debug;
 }
 
-void yyset_debug (int  _bdebug )
+void syncrep_yyset_debug (int  _bdebug )
 {
-        yy_flex_debug = _bdebug ;
+        syncrep_yy_flex_debug = _bdebug ;
 }
 
 static int yy_init_globals (void)
 {
         /* Initialization is the same as for the non-reentrant scanner.
-     * This function is called from yylex_destroy(), so don't allocate here.
+     * This function is called from syncrep_yylex_destroy(), so don't allocate here.
      */
 
     (yy_buffer_stack) = NULL;
@@ -1832,36 +1790,36 @@ static int yy_init_globals (void)
 
 /* Defined in main.c */
 #ifdef YY_STDINIT
-    yyin = stdin;
-    yyout = stdout;
+    syncrep_yyin = stdin;
+    syncrep_yyout = stdout;
 #else
-    yyin = NULL;
-    yyout = NULL;
+    syncrep_yyin = NULL;
+    syncrep_yyout = NULL;
 #endif
 
     /* For future reference: Set errno on error, since we are called by
-     * yylex_init()
+     * syncrep_yylex_init()
      */
     return 0;
 }
 
-/* yylex_destroy is for both reentrant and non-reentrant scanners. */
-int yylex_destroy  (void)
+/* syncrep_yylex_destroy is for both reentrant and non-reentrant scanners. */
+int syncrep_yylex_destroy  (void)
 {
     
     /* Pop the buffer stack, destroying each element. */
 	while(YY_CURRENT_BUFFER){
-		yy_delete_buffer( YY_CURRENT_BUFFER  );
+		syncrep_yy_delete_buffer(YY_CURRENT_BUFFER  );
 		YY_CURRENT_BUFFER_LVALUE = NULL;
-		yypop_buffer_state();
+		syncrep_yypop_buffer_state();
 	}
 
 	/* Destroy the stack itself. */
-	yyfree((yy_buffer_stack) );
+	syncrep_yyfree((yy_buffer_stack) );
 	(yy_buffer_stack) = NULL;
 
     /* Reset the globals. This is important in a non-reentrant scanner so the next time
-     * yylex() is called, initialization will occur. */
+     * syncrep_yylex() is called, initialization will occur. */
     yy_init_globals( );
 
     return 0;
@@ -1872,7 +1830,7 @@ int yylex_destroy  (void)
  */
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy (char* s1, const char * s2, int n )
+static void yy_flex_strncpy (char* s1, yyconst char * s2, int n )
 {
 		
 	int i;
@@ -1882,7 +1840,7 @@ static void yy_flex_strncpy (char* s1, const char * s2, int n )
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen (const char * s )
+static int yy_flex_strlen (yyconst char * s )
 {
 	int n;
 	for ( n = 0; s[n]; ++n )
@@ -1892,12 +1850,12 @@ static int yy_flex_strlen (const char * s )
 }
 #endif
 
-void *yyalloc (yy_size_t  size )
+void *syncrep_yyalloc (yy_size_t  size )
 {
 			return malloc(size);
 }
 
-void *yyrealloc  (void * ptr, yy_size_t  size )
+void *syncrep_yyrealloc  (void * ptr, yy_size_t  size )
 {
 		
 	/* The cast to (char *) in the following accommodates both
@@ -1910,28 +1868,29 @@ void *yyrealloc  (void * ptr, yy_size_t  size )
 	return realloc(ptr, size);
 }
 
-void yyfree (void * ptr )
+void syncrep_yyfree (void * ptr )
 {
-			free( (char *) ptr );	/* see yyrealloc() for (char *) cast */
+			free( (char *) ptr );	/* see syncrep_yyrealloc() for (char *) cast */
 }
 
 #define YYTABLES_NAME "yytables"
 
-#line 115 "src/backend/replication/syncrep_scanner.l"
+#line 115 "syncrep_scanner.l"
+
 
 
 /* LCOV_EXCL_STOP */
 
-/* Needs to be here for access to yytext */
+/* Needs to be here for access to syncrep_yytext */
 void
 syncrep_yyerror(const char *message)
 {
 	/* report only the first error in a parse operation */
 	if (syncrep_parse_error_msg)
 		return;
-	if (yytext[0])
+	if (syncrep_yytext[0])
 		syncrep_parse_error_msg = psprintf("%s at or near \"%s\"",
-										   message, yytext);
+										   message, syncrep_yytext);
 	else
 		syncrep_parse_error_msg = psprintf("%s at end of input",
 										   message);
@@ -1947,7 +1906,7 @@ syncrep_scanner_init(const char *str)
 	 * Might be left over after ereport()
 	 */
 	if (YY_CURRENT_BUFFER)
-		yy_delete_buffer(YY_CURRENT_BUFFER);
+		syncrep_yy_delete_buffer(YY_CURRENT_BUFFER);
 
 	/*
 	 * Make a scan buffer with special termination needed by flex.
@@ -1955,7 +1914,7 @@ syncrep_scanner_init(const char *str)
 	scanbuf = (char *) palloc(slen + 2);
 	memcpy(scanbuf, str, slen);
 	scanbuf[slen] = scanbuf[slen + 1] = YY_END_OF_BUFFER_CHAR;
-	scanbufhandle = yy_scan_buffer(scanbuf, slen + 2);
+	scanbufhandle = syncrep_yy_scan_buffer(scanbuf,slen + 2);
 
 	/* Make sure we start in proper state */
 	BEGIN(INITIAL);
@@ -1964,7 +1923,7 @@ syncrep_scanner_init(const char *str)
 void
 syncrep_scanner_finish(void)
 {
-	yy_delete_buffer(scanbufhandle);
+	syncrep_yy_delete_buffer(scanbufhandle);
 	scanbufhandle = NULL;
 }
 

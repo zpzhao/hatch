@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_BASE_YY_SRC_BACKEND_PARSER_GRAM_H_INCLUDED
-# define YY_BASE_YY_SRC_BACKEND_PARSER_GRAM_H_INCLUDED
+#ifndef YY_BASE_YY_GRAM_H_INCLUDED
+# define YY_BASE_YY_GRAM_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -513,7 +513,7 @@ extern int base_yydebug;
 
 union YYSTYPE
 {
-#line 202 "src/backend/parser/gram.y" /* yacc.c:1909  */
+#line 202 "gram.y" /* yacc.c:1909  */
 
 	core_YYSTYPE		core_yystype;
 	/* these fields must match core_YYSTYPE: */
@@ -557,7 +557,7 @@ union YYSTYPE
 	PartitionBoundSpec	*partboundspec;
 	RoleSpec			*rolespec;
 
-#line 561 "src/backend/parser/gram.h" /* yacc.c:1909  */
+#line 561 "gram.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -583,4 +583,4 @@ struct YYLTYPE
 
 int base_yyparse (core_yyscan_t yyscanner);
 
-#endif /* !YY_BASE_YY_SRC_BACKEND_PARSER_GRAM_H_INCLUDED  */
+#endif /* !YY_BASE_YY_GRAM_H_INCLUDED  */

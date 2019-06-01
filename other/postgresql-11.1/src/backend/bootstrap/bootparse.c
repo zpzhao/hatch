@@ -70,7 +70,7 @@
 #define yychar          boot_yychar
 
 /* Copy the first part of user declarations.  */
-#line 1 "src/backend/bootstrap/bootparse.y" /* yacc.c:339  */
+#line 1 "bootparse.y" /* yacc.c:339  */
 
 /*-------------------------------------------------------------------------
  *
@@ -169,7 +169,7 @@ do_end(void)
 static int num_columns_read = 0;
 
 
-#line 173 "src/backend/bootstrap/bootparse.c" /* yacc.c:339  */
+#line 173 "bootparse.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -235,7 +235,7 @@ extern int boot_yydebug;
 
 union YYSTYPE
 {
-#line 104 "src/backend/bootstrap/bootparse.y" /* yacc.c:355  */
+#line 104 "bootparse.y" /* yacc.c:355  */
 
 	List		*list;
 	IndexElem	*ielem;
@@ -244,7 +244,7 @@ union YYSTYPE
 	int			ival;
 	Oid			oidval;
 
-#line 248 "src/backend/bootstrap/bootparse.c" /* yacc.c:355  */
+#line 248 "bootparse.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -261,7 +261,7 @@ int boot_yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 265 "src/backend/bootstrap/bootparse.c" /* yacc.c:358  */
+#line 265 "bootparse.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1434,27 +1434,27 @@ yyreduce:
   switch (yyn)
     {
         case 14:
-#line 156 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 156 "bootparse.y" /* yacc.c:1646  */
     {
 					do_start();
 					boot_openrel((yyvsp[0].str));
 					do_end();
 				}
-#line 1444 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1444 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 165 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 165 "bootparse.y" /* yacc.c:1646  */
     {
 					do_start();
 					closerel((yyvsp[0].str));
 					do_end();
 				}
-#line 1454 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1454 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 174 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 174 "bootparse.y" /* yacc.c:1646  */
     {
 					do_start();
 					numattr = 0;
@@ -1464,19 +1464,19 @@ yyreduce:
 						 (yyvsp[-6].str),
 						 (yyvsp[-5].oidval));
 				}
-#line 1468 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1468 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 184 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 184 "bootparse.y" /* yacc.c:1646  */
     {
 					do_end();
 				}
-#line 1476 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1476 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 188 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 188 "bootparse.y" /* yacc.c:1646  */
     {
 					TupleDesc tupdesc;
 					bool	shared_relation;
@@ -1550,11 +1550,11 @@ yyreduce:
 					}
 					do_end();
 				}
-#line 1554 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1554 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 265 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 265 "bootparse.y" /* yacc.c:1646  */
     {
 					do_start();
 					if ((yyvsp[0].oidval))
@@ -1563,11 +1563,11 @@ yyreduce:
 						elog(DEBUG4, "inserting row");
 					num_columns_read = 0;
 				}
-#line 1567 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1567 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 274 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 274 "bootparse.y" /* yacc.c:1646  */
     {
 					if (num_columns_read != numattr)
 						elog(ERROR, "incorrect number of columns in row (expected %d, got %d)",
@@ -1577,11 +1577,11 @@ yyreduce:
 					InsertOneTuple((yyvsp[-4].oidval));
 					do_end();
 				}
-#line 1581 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1581 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 287 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 287 "bootparse.y" /* yacc.c:1646  */
     {
 					IndexStmt *stmt = makeNode(IndexStmt);
 					Oid		relationId;
@@ -1627,11 +1627,11 @@ yyreduce:
 								false);
 					do_end();
 				}
-#line 1631 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1631 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 336 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 336 "bootparse.y" /* yacc.c:1646  */
     {
 					IndexStmt *stmt = makeNode(IndexStmt);
 					Oid		relationId;
@@ -1677,11 +1677,11 @@ yyreduce:
 								false);
 					do_end();
 				}
-#line 1681 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1681 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 385 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 385 "bootparse.y" /* yacc.c:1646  */
     {
 					elog(DEBUG4, "creating toast table for table \"%s\"", (yyvsp[0].str));
 
@@ -1690,33 +1690,33 @@ yyreduce:
 					BootstrapToastTable((yyvsp[0].str), (yyvsp[-3].oidval), (yyvsp[-2].oidval));
 					do_end();
 				}
-#line 1694 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1694 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 397 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 397 "bootparse.y" /* yacc.c:1646  */
     {
 					do_start();
 					build_indices();
 					do_end();
 				}
-#line 1704 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1704 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 406 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 406 "bootparse.y" /* yacc.c:1646  */
     { (yyval.list) = lappend((yyvsp[-2].list), (yyvsp[0].ielem)); }
-#line 1710 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1710 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 407 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 407 "bootparse.y" /* yacc.c:1646  */
     { (yyval.list) = list_make1((yyvsp[0].ielem)); }
-#line 1716 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1716 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 412 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 412 "bootparse.y" /* yacc.c:1646  */
     {
 					IndexElem *n = makeNode(IndexElem);
 					n->name = (yyvsp[-1].str);
@@ -1728,243 +1728,243 @@ yyreduce:
 					n->nulls_ordering = SORTBY_NULLS_DEFAULT;
 					(yyval.ielem) = n;
 				}
-#line 1732 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1732 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 426 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 426 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = 1; }
-#line 1738 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1738 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 427 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 427 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = 0; }
-#line 1744 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1744 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 431 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 431 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = 1; }
-#line 1750 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1750 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 432 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 432 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = 0; }
-#line 1756 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1756 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 436 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 436 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = 1; }
-#line 1762 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1762 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 437 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 437 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = 0; }
-#line 1768 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1768 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 441 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 441 "bootparse.y" /* yacc.c:1646  */
     { (yyval.oidval) = (yyvsp[0].oidval); }
-#line 1774 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1774 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 442 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 442 "bootparse.y" /* yacc.c:1646  */
     { (yyval.oidval) = InvalidOid; }
-#line 1780 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1780 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 452 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 452 "bootparse.y" /* yacc.c:1646  */
     {
 				   if (++numattr > MAXATTR)
 						elog(FATAL, "too many columns");
 				   DefineAttr((yyvsp[-3].str), (yyvsp[-1].str), numattr-1, (yyvsp[0].ival));
 				}
-#line 1790 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1790 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 460 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 460 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = BOOTCOL_NULL_FORCE_NOT_NULL; }
-#line 1796 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1796 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 461 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 461 "bootparse.y" /* yacc.c:1646  */
     {  (yyval.ival) = BOOTCOL_NULL_FORCE_NULL; }
-#line 1802 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1802 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 462 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 462 "bootparse.y" /* yacc.c:1646  */
     { (yyval.ival) = BOOTCOL_NULL_AUTO; }
-#line 1808 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1808 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 466 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 466 "bootparse.y" /* yacc.c:1646  */
     { (yyval.oidval) = atooid((yyvsp[0].str)); }
-#line 1814 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1814 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 470 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 470 "bootparse.y" /* yacc.c:1646  */
     { (yyval.oidval) = (yyvsp[0].oidval); }
-#line 1820 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1820 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 471 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 471 "bootparse.y" /* yacc.c:1646  */
     { (yyval.oidval) = InvalidOid; }
-#line 1826 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1826 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 482 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 482 "bootparse.y" /* yacc.c:1646  */
     { InsertOneValue((yyvsp[0].str), num_columns_read++); }
-#line 1832 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1832 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 484 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 484 "bootparse.y" /* yacc.c:1646  */
     { InsertOneNull(num_columns_read++); }
-#line 1838 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1838 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 488 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 488 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 1844 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1844 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 489 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 489 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1850 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1850 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 490 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 490 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1856 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1856 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 491 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 491 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1862 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1862 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 492 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 492 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1868 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1868 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 493 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 493 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1874 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1874 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 494 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 494 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1880 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1880 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 495 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 495 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1886 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1886 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 496 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 496 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1892 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1892 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 497 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 497 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1898 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1898 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 498 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 498 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1904 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1904 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 499 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 499 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1910 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1910 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 500 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 500 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1916 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1916 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 501 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 501 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1922 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1922 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 502 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 502 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1928 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1928 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 503 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 503 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1934 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1934 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 504 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 504 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1940 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1940 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 505 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 505 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1946 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1946 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 506 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 506 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1952 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1952 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 507 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 507 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1958 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1958 "bootparse.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 508 "src/backend/bootstrap/bootparse.y" /* yacc.c:1646  */
+#line 508 "bootparse.y" /* yacc.c:1646  */
     { (yyval.str) = pstrdup((yyvsp[0].kw)); }
-#line 1964 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1964 "bootparse.c" /* yacc.c:1646  */
     break;
 
 
-#line 1968 "src/backend/bootstrap/bootparse.c" /* yacc.c:1646  */
+#line 1968 "bootparse.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2192,7 +2192,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 510 "src/backend/bootstrap/bootparse.y" /* yacc.c:1906  */
+#line 510 "bootparse.y" /* yacc.c:1906  */
 
 
 #include "bootscanner.c"

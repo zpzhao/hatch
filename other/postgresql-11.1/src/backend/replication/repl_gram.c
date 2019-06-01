@@ -70,7 +70,7 @@
 #define yychar          replication_yychar
 
 /* Copy the first part of user declarations.  */
-#line 1 "src/backend/replication/repl_gram.y" /* yacc.c:339  */
+#line 1 "repl_gram.y" /* yacc.c:339  */
 
 /*-------------------------------------------------------------------------
  *
@@ -113,7 +113,7 @@ static SQLCmd *make_sqlcmd(void);
 #define YYFREE   pfree
 
 
-#line 117 "src/backend/replication/repl_gram.c" /* yacc.c:339  */
+#line 117 "repl_gram.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -183,7 +183,7 @@ extern int replication_yydebug;
 
 union YYSTYPE
 {
-#line 47 "src/backend/replication/repl_gram.y" /* yacc.c:355  */
+#line 47 "repl_gram.y" /* yacc.c:355  */
 
 		char					*str;
 		bool					boolval;
@@ -194,7 +194,7 @@ union YYSTYPE
 		List					*list;
 		DefElem					*defelt;
 
-#line 198 "src/backend/replication/repl_gram.c" /* yacc.c:355  */
+#line 198 "repl_gram.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -211,7 +211,7 @@ int replication_yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 215 "src/backend/replication/repl_gram.c" /* yacc.c:358  */
+#line 215 "repl_gram.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1342,139 +1342,139 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 109 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 109 "repl_gram.y" /* yacc.c:1646  */
     {
 					replication_parse_result = (yyvsp[-1].node);
 				}
-#line 1350 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1350 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 135 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 135 "repl_gram.y" /* yacc.c:1646  */
     {
 					(yyval.node) = (Node *) makeNode(IdentifySystemCmd);
 				}
-#line 1358 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1358 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 145 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 145 "repl_gram.y" /* yacc.c:1646  */
     {
 					VariableShowStmt *n = makeNode(VariableShowStmt);
 					n->name = (yyvsp[0].str);
 					(yyval.node) = (Node *) n;
 				}
-#line 1368 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1368 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 151 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 151 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 1374 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1374 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 153 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 153 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.str) = psprintf("%s.%s", (yyvsp[-2].str), (yyvsp[0].str)); }
-#line 1380 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1380 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 162 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 162 "repl_gram.y" /* yacc.c:1646  */
     {
 					BaseBackupCmd *cmd = makeNode(BaseBackupCmd);
 					cmd->options = (yyvsp[0].list);
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1390 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1390 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 171 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 171 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.list) = lappend((yyvsp[-1].list), (yyvsp[0].defelt)); }
-#line 1396 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1396 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 173 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 173 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.list) = NIL; }
-#line 1402 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1402 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 178 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 178 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("label",
 								   (Node *)makeString((yyvsp[0].str)), -1);
 				}
-#line 1411 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1411 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 183 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 183 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("progress",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1420 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1420 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 188 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 188 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("fast",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1429 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1429 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 193 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 193 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("wal",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1438 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1438 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 198 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 198 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("nowait",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1447 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1447 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 203 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 203 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("max_rate",
 								   (Node *)makeInteger((yyvsp[0].uintval)), -1);
 				}
-#line 1456 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1456 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 208 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 208 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("tablespace_map",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1465 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1465 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 213 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 213 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("noverify_checksums",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1474 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1474 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 222 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 222 "repl_gram.y" /* yacc.c:1646  */
     {
 					CreateReplicationSlotCmd *cmd;
 					cmd = makeNode(CreateReplicationSlotCmd);
@@ -1484,11 +1484,11 @@ yyreduce:
 					cmd->options = (yyvsp[0].list);
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1488 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1488 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 233 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 233 "repl_gram.y" /* yacc.c:1646  */
     {
 					CreateReplicationSlotCmd *cmd;
 					cmd = makeNode(CreateReplicationSlotCmd);
@@ -1499,59 +1499,59 @@ yyreduce:
 					cmd->options = (yyvsp[0].list);
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1503 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1503 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 247 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 247 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.list) = lappend((yyvsp[-1].list), (yyvsp[0].defelt)); }
-#line 1509 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1509 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 249 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 249 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.list) = NIL; }
-#line 1515 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1515 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 254 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 254 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("export_snapshot",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1524 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1524 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 259 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 259 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("export_snapshot",
 								   (Node *)makeInteger(false), -1);
 				}
-#line 1533 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1533 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 264 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 264 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("use_snapshot",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1542 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1542 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 269 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 269 "repl_gram.y" /* yacc.c:1646  */
     {
 				  (yyval.defelt) = makeDefElem("reserve_wal",
 								   (Node *)makeInteger(true), -1);
 				}
-#line 1551 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1551 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 278 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 278 "repl_gram.y" /* yacc.c:1646  */
     {
 					DropReplicationSlotCmd *cmd;
 					cmd = makeNode(DropReplicationSlotCmd);
@@ -1559,11 +1559,11 @@ yyreduce:
 					cmd->wait = false;
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1563 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1563 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 286 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 286 "repl_gram.y" /* yacc.c:1646  */
     {
 					DropReplicationSlotCmd *cmd;
 					cmd = makeNode(DropReplicationSlotCmd);
@@ -1571,11 +1571,11 @@ yyreduce:
 					cmd->wait = true;
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1575 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1575 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 300 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 300 "repl_gram.y" /* yacc.c:1646  */
     {
 					StartReplicationCmd *cmd;
 
@@ -1586,11 +1586,11 @@ yyreduce:
 					cmd->timeline = (yyvsp[0].uintval);
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1590 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1590 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 315 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 315 "repl_gram.y" /* yacc.c:1646  */
     {
 					StartReplicationCmd *cmd;
 					cmd = makeNode(StartReplicationCmd);
@@ -1600,11 +1600,11 @@ yyreduce:
 					cmd->options = (yyvsp[0].list);
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1604 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1604 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 330 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 330 "repl_gram.y" /* yacc.c:1646  */
     {
 					TimeLineHistoryCmd *cmd;
 
@@ -1618,35 +1618,35 @@ yyreduce:
 
 					(yyval.node) = (Node *) cmd;
 				}
-#line 1622 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1622 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 351 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 351 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.boolval) = true; }
-#line 1628 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1628 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 352 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 352 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.boolval) = false; }
-#line 1634 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1634 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 357 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 357 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.str) = (yyvsp[0].str); }
-#line 1640 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1640 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 359 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 359 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.str) = NULL; }
-#line 1646 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1646 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 364 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 364 "repl_gram.y" /* yacc.c:1646  */
     {
 					if ((yyvsp[0].uintval) <= 0)
 						ereport(ERROR,
@@ -1654,71 +1654,71 @@ yyreduce:
 								 (errmsg("invalid timeline %u", (yyvsp[0].uintval)))));
 					(yyval.uintval) = (yyvsp[0].uintval);
 				}
-#line 1658 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1658 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 371 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 371 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.uintval) = 0; }
-#line 1664 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1664 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 376 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 376 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.list) = (yyvsp[-1].list); }
-#line 1670 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1670 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 377 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 377 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.list) = NIL; }
-#line 1676 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1676 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 382 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 382 "repl_gram.y" /* yacc.c:1646  */
     {
 					(yyval.list) = list_make1((yyvsp[0].defelt));
 				}
-#line 1684 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1684 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 386 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 386 "repl_gram.y" /* yacc.c:1646  */
     {
 					(yyval.list) = lappend((yyvsp[-2].list), (yyvsp[0].defelt));
 				}
-#line 1692 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1692 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 393 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 393 "repl_gram.y" /* yacc.c:1646  */
     {
 					(yyval.defelt) = makeDefElem((yyvsp[-1].str), (yyvsp[0].node), -1);
 				}
-#line 1700 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1700 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 399 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 399 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.node) = (Node *) makeString((yyvsp[0].str)); }
-#line 1706 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1706 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 400 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 400 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.node) = NULL; }
-#line 1712 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1712 "repl_gram.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 404 "src/backend/replication/repl_gram.y" /* yacc.c:1646  */
+#line 404 "repl_gram.y" /* yacc.c:1646  */
     { (yyval.node) = (Node *) make_sqlcmd(); }
-#line 1718 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1718 "repl_gram.c" /* yacc.c:1646  */
     break;
 
 
-#line 1722 "src/backend/replication/repl_gram.c" /* yacc.c:1646  */
+#line 1722 "repl_gram.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1946,7 +1946,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 406 "src/backend/replication/repl_gram.y" /* yacc.c:1906  */
+#line 406 "repl_gram.y" /* yacc.c:1906  */
 
 
 static SQLCmd *
