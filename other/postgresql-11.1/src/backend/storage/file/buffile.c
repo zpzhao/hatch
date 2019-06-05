@@ -476,6 +476,10 @@ BufFileDumpBuffer(BufFile *file)
 		 */
 		if (file->curOffset >= MAX_PHYSICAL_FILESIZE)
 		{
+			/*
+			 * TODOTEST
+			 * 为什么这里用while，numfiles更新不及时吗还是curfile不及时；会有并行写文件的情况吗
+			 */
 			while (file->curFile + 1 >= file->numFiles)
 				extendBufFile(file);
 			file->curFile++;

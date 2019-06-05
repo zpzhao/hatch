@@ -222,6 +222,10 @@ static bool have_xact_temporary_files = false;
  * than INT_MAX kilobytes.  When not enforcing, it could theoretically
  * overflow, but we don't care.
  */
+/*
+ * 所有temp文件的全部大小字节为单位
+ * 每次写入时都 会累加，判断是否超过上限
+ */
 static uint64 temporary_files_size = 0;
 
 /*
@@ -1489,6 +1493,15 @@ PathNameDeleteTemporaryDir(const char *dirname)
  * if you need "somewhat" temporary storage, this might be useful. In either
  * case, the file is removed when the File is explicitly closed.
  */
+/*
+ * TODOTEST
+ * 顺着这个函数往下看，有那几种情况会下临时文件：hashjoin? brin索引？gist索引？
+ * 1.当中间数据非常多时，会产生临时文件吗？比如：select * from t a, (select * from t) b; 基中b是临时数据，或其它运算的中间结果很多时
+ * 超出内存限制；
+ * 2.什么情况下不写临时文件，无限制使用内存，直到swap空间被用完？
+ * 3.interXact是什么时候赋值，有两种类型，一种时用完就会删除，另一种是事务结束时才会删除；
+ * FD_TEMPORARY   FD_XACT_TEMPORARY
+ */
 File
 OpenTemporaryFile(bool interXact)
 {
@@ -1512,6 +1525,9 @@ OpenTemporaryFile(bool interXact)
 	 */
 	if (numTempTableSpaces > 0 && !interXact)
 	{
+		/*
+		 * [TODOTEST] 多个临时表空间时，每次都是获取下一个表空间吗？如何指定表空间和某一个表空间满了会如何？
+		 */
 		Oid			tblspcOid = GetNextTempTableSpace();
 
 		if (OidIsValid(tblspcOid))
