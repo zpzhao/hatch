@@ -1,0 +1,10 @@
+10:39:55,108 [main] ERROR  jTPCC : Term-00, Unable to load the database driver!
+10:56:13,677 [main] ERROR  jTPCC : Term-00, Unable to load the database driver!
+11:06:59,608 [main] ERROR  jTPCC : Term-00, Unable to load the database driver!
+11:08:25,047 [main] ERROR  jTPCC : Term-00, Unable to load the database driver!
+11:09:32,435 [main] ERROR  OSCollector : OSCollector Cannot run program "python": CreateProcess error=2, 系统找不到指定的文件。
+11:10:17,461 [main] ERROR  OSCollector : OSCollector Cannot run program "python": CreateProcess error=2, 系统找不到指定的文件。
+11:12:25,380 [main] ERROR  OSCollector : OSCollector Cannot run program "python": CreateProcess error=2, 系统找不到指定的文件。
+11:13:55,447 [main] ERROR  OSCollector : OSCollector Cannot run program "python": CreateProcess error=2, 系统找不到指定的文件。
+11:14:42,919 [main] ERROR  jTPCC : Term-00, 尝试连线已失败。
+11:16:49,633 [main] ERROR  jTPCC : Term-00, 尝试连线已失败。

@@ -1,6 +1,6 @@
 db=postgres
 driver=com.uxsino.uxdb.Driver
-conn=jdbc:uxdb://192.168.1.157:5432/uxdb
+conn=jdbc:uxdb://20.0.0.33:5432/uxdb
 user=zpzhao
 password=123456
 
