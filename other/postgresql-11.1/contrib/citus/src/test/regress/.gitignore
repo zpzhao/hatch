@@ -1,0 +1,17 @@
+# Local binaries
+/pg_regress
+
+# Generated subdirectories
+/tmp_check/
+/results/
+/log/
+
+# Regression test output
+/regression.diffs
+/regression.out
+
+# Regression test timing
+/test_times.log
+
+# Failure test side effets
+/proxy.output
