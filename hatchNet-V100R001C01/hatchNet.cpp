@@ -36,6 +36,7 @@ int CHatchNet::hatchCreateSocket(int type,int protocol)
 	unsigned long dwResult;
 	if(type == SOCK_DGRAM)
 	{
+		/* SIO_UDP_CONNRESET è®¾ç½®æ˜¯ä¸ºäº†è§„é¿winsockåœ¨udpæ—¶ï¼Œå¯¹ç«¯å…³é—­åï¼Œrecvfromè¯»ä¸€ç›´è¿”å›10054é”™è¯¯ï¼Œå¯¼è‡´socketå¤±æ•ˆçš„é—®é¢˜ */
 		WSAIoctl(m_hSocket,SIO_UDP_CONNRESET,&dwInbuf,sizeof(dwInbuf),&dwOutBuf,sizeof(dwOutBuf),&dwResult,NULL,NULL);
 	}
 	return 0;
@@ -187,7 +188,7 @@ int CHatchNet::hatchSelectRecv()
 
 CHatchNetLayer::CHatchNetLayer()
 {
-	//³õÊ¼»¯ÏûÏ¢»º³åÇø
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 CHatchNetLayer::~CHatchNetLayer()
@@ -330,7 +331,7 @@ int CHatchNetManager::hatchCreateNetServices(FrmInfo *frm)
 		return -1;
 	}
 
-	//´´½¨socket£¬²¢°ó¶¨µ½Ö¸¶¨¶Ë¿Ú
+	//ï¿½ï¿½ï¿½ï¿½socketï¿½ï¿½ï¿½ï¿½ï¿½ó¶¨µï¿½Ö¸ï¿½ï¿½ï¿½Ë¿ï¿½
 	frm->m_baseNet = new CHatchNet();
 	if(NULL == frm->m_baseNet)
 	{
@@ -355,7 +356,7 @@ int CHatchNetManager::hatchCreateNetServices(FrmInfo *frm)
 		return ret;
 	}
 
-	//Ö¸¶¨ÕæÕıµØÖ·
+	//Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
 #if SERVICES_TYPE == 1
 	char hname[128];
 	hostent *thost = NULL;
@@ -371,7 +372,7 @@ int CHatchNetManager::hatchCreateNetServices(FrmInfo *frm)
 	}
 #endif
 
-	//°ó¶¨ÍøÂç²ã
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	frm->m_netLayer = new CHatchNetLayer();
 	if(NULL == frm->m_netLayer)
 	{
@@ -488,7 +489,7 @@ int CHatchNetManager::hatchDelServiceList(FrmInfo *frm)
 
 int CHatchNetManager::hatchSetOwnerAddr(void)
 {
-	//Èç¹ûÊÇ¿Í»§¶Ë£¬Ğ©º¯ÊıÓĞĞ§£¬²¢½«¿Í»§¶ËÓÃ»§µØÖ·¸üĞÂ
+	//ï¿½ï¿½ï¿½ï¿½Ç¿Í»ï¿½ï¿½Ë£ï¿½Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
 #if SERVICES_TYPE == 1
 	UserListIterator ite = CHatchUserList::hatchLocateUser(NULL);
 	(*ite)->hatchSetAddr(&(g_frmServicesList.front()->m_ownerAddress.sin_addr));
