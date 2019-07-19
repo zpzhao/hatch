@@ -6,9 +6,13 @@
  */
 
 #include <stdio.h>
+#include "test_signal.h"
 
 int main(int argc, char *argv[])
 {
 	printf("test: hello world\n");
+
+	(void)signal_main();
+
 	return 0;
 }

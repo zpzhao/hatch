@@ -8,6 +8,9 @@
 #ifndef EXAMPLE_EX_SIGNAL_TEST_SIGNAL_H_
 #define EXAMPLE_EX_SIGNAL_TEST_SIGNAL_H_
 
-
+/**
+ * signal example
+ */
+int signal_main();
 
 #endif /* EXAMPLE_EX_SIGNAL_TEST_SIGNAL_H_ */

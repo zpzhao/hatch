@@ -42,7 +42,13 @@ void signal_proc(int sig)
  */
 int signal_main()
 {
-	signal(SIGALRM, signal_proc);
+	(void)signal(SIGALRM, signal_proc);
+
+	alarm(10);
+
+	pause();
+
+	printf("signal test end.\n");
 
 	return 0;
 }
