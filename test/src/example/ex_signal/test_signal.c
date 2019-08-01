@@ -15,6 +15,27 @@
 /* SIGALRM signaled flag, default is 0 */
 static int alarmFlag = 0;
 
+
+void signal_proc(int sig);
+void sigalarm_ex();
+void sigzeromask_ex();
+
+/**
+ * signals between processes or threads to examples
+ *
+ */
+int signal_main()
+{
+
+	// sigalarm_ex();
+	// sigzeromask_ex();
+
+	printf("signal test end.\n");
+
+	return 0;
+}
+
+
 /**
  * signal procedure
  * input sig is signale id
@@ -37,19 +58,31 @@ void signal_proc(int sig)
 }
 
 /**
- * signals between processes or threads to examples
- *
+ * SIGALARM signal example
  */
-int signal_main()
+void sigalarm_ex()
 {
 	(void)signal(SIGALRM, signal_proc);
 
 	alarm(10);
 
 	pause();
-
-	printf("signal test end.\n");
-
-	return 0;
 }
 
+/**
+ * empty sigmask bits test
+ * no response for all signals, except terminal or int etc , result process end.
+ */
+void sigzeromask_ex()
+{
+	sigset_t zerosg, igsg;
+
+	sigemptyset(&zerosg);
+
+	while(1)
+	{
+		printf("sigzero suspend start.\n");
+		sigsuspend(&zerosg);
+		printf("sigzero suspend end.\n");
+	}
+}

@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/CPLUS_INCLUDE_PATH/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/CPLUS_INCLUDE_PATH/operation=append
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/CPLUS_INCLUDE_PATH/value=/usr/local/include/c++/7.3.0
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/C_INCLUDE_PATH/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/C_INCLUDE_PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/C_INCLUDE_PATH/value=/usr/include
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/append=true
+environment/project/cdt.managedbuild.config.gnu.exe.debug.395172963/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/CPLUS_INCLUDE_PATH/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/CPLUS_INCLUDE_PATH/operation=append
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/CPLUS_INCLUDE_PATH/value=/usr/local/include/c++/7.3.0
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/C_INCLUDE_PATH/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/C_INCLUDE_PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/C_INCLUDE_PATH/value=/usr/include
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/append=true
+environment/project/cdt.managedbuild.config.gnu.exe.release.236789886/appendContributed=true

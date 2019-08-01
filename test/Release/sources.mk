@@ -26,4 +26,5 @@ SUBDIRS := \
 src/example/ex_signal \
 src/interface/net \
 src/main \
+src/test/testnet \
 

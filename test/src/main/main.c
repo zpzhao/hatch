@@ -6,13 +6,22 @@
  */
 
 #include <stdio.h>
-#include "test_signal.h"
+#define TEST_CASE
+
+#ifdef TEST_CASE
+#include "testnet.h"
+#endif
+
 
 int main(int argc, char *argv[])
 {
 	printf("test: hello world\n");
 
-	(void)signal_main();
+#ifdef TEST_CASE
+	(void)testnet_main(argc, argv);
+#endif
 
 	return 0;
 }
+
+

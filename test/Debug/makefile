@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/test/testnet/subdir.mk
 -include src/main/subdir.mk
 -include src/interface/net/subdir.mk
 -include src/example/ex_signal/subdir.mk
