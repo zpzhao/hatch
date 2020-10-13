@@ -1,0 +1,8 @@
+# compile file
+*.class
+*.o
+*.VC.db  # vs project metadate file
+core.*   # coredump file
+
+# binary directories
+
