@@ -2,8 +2,7 @@
 
 #include <fcntl.h>  
 #include <io.h>  
-#include <afxwin.h>
-
+#include <afxwin.h>  
 
 
 int test_mmap()
