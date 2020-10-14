@@ -309,6 +309,12 @@ RelationAddExtraBlocks(Relation relation, BulkInsertState bistate)
  *	ereport(ERROR) is allowed here, so this routine *must* be called
  *	before any (unlogged) changes are made in buffer pool.
  */
+/**
+ * relation 更新的表
+ * len		需要的空间大小
+ * otherbuffer
+ * options 插入标记，处理选项
+ */
 Buffer
 RelationGetBufferForTuple(Relation relation, Size len,
 						  Buffer otherBuffer, int options,

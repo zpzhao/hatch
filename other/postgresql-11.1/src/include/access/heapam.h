@@ -23,7 +23,9 @@
 #include "utils/relcache.h"
 #include "utils/snapshot.h"
 
-
+/**
+ * options 标记，32bits
+ */
 /* "options" flag bits for heap_insert */
 #define HEAP_INSERT_SKIP_WAL	0x0001
 #define HEAP_INSERT_SKIP_FSM	0x0002
@@ -31,6 +33,9 @@
 #define HEAP_INSERT_SPECULATIVE 0x0008
 #define HEAP_INSERT_NO_LOGICAL	0x0010
 
+/**
+ * bulkInsert 批量插入状态指针
+ */
 typedef struct BulkInsertStateData *BulkInsertState;
 
 /*

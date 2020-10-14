@@ -2,7 +2,14 @@
 *.class
 *.o
 *.VC.db  # vs project metadate file
+*.suo  # vs project metadate file
+*.idb  # vs project metadate file
+*.pdb  # vs project metadate file
+*.ipch  # vs project metadate file
+*.log
 core.*   # coredump file
-
+*.tar
+*.tar.gz
+*.jar
 # binary directories
 

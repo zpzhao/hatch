@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6692EFD2-744B-4BD8-A36B-738A3786FB57}</ProjectGuid>
+    <ProjectGuid>{54F05CA9-C9F6-4514-A015-91B4373046BB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Sort</RootNamespace>
+    <RootNamespace>zero_template</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,13 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="heapsort.cpp" />
-    <ClCompile Include="sortmain.cpp" />
-    <ClCompile Include="sortpublic.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="heapsort.h" />
-    <ClInclude Include="sortpublic.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
