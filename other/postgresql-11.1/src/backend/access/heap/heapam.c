@@ -2627,6 +2627,9 @@ heap_insert(Relation relation, HeapTuple tup, CommandId cid,
  * tuple if not. Note that in any case, the header fields are also set in
  * the original tuple.
  */
+/*
+   * 设置tuple的头部属性值
+ */
 static HeapTuple
 heap_prepare_insert(Relation relation, HeapTuple tup, TransactionId xid,
 					CommandId cid, int options)
@@ -2639,11 +2642,17 @@ heap_prepare_insert(Relation relation, HeapTuple tup, TransactionId xid,
 	 * of a lock group, but we don't prohibit that case here because there are
 	 * useful special cases that we can safely allow, such as CREATE TABLE AS.
 	 */
+	/*
+	 * 不支持并行插入
+	 */
 	if (IsParallelWorker())
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TRANSACTION_STATE),
 				 errmsg("cannot insert tuples in a parallel worker")));
 
+	/*
+	 * 设置OID
+	 */
 	if (relation->rd_rel->relhasoids)
 	{
 #ifdef NOT_USED
@@ -2668,13 +2677,19 @@ heap_prepare_insert(Relation relation, HeapTuple tup, TransactionId xid,
 		Assert(!(tup->t_data->t_infomask & HEAP_HASOID));
 	}
 
+	/*
+	 * [TODOTEST] infomask/infomask2
+	 */
 	tup->t_data->t_infomask &= ~(HEAP_XACT_MASK);
 	tup->t_data->t_infomask2 &= ~(HEAP2_XACT_MASK);
-	tup->t_data->t_infomask |= HEAP_XMAX_INVALID;
-	HeapTupleHeaderSetXmin(tup->t_data, xid);
+	tup->t_data->t_infomask |= HEAP_XMAX_INVALID;	/* 插入时xmax设置为无效 */
+	HeapTupleHeaderSetXmin(tup->t_data, xid);		/* 设置xmin为事务id */
 	if (options & HEAP_INSERT_FROZEN)
-		HeapTupleHeaderSetXminFrozen(tup->t_data);
+		HeapTupleHeaderSetXminFrozen(tup->t_data);  /* 冻结型插入，在事务id回卷时发生；此处设置xmin为冻结标志 */
 
+	/*
+	 * 设置tuple的cid，xmax, tableoid
+	 */
 	HeapTupleHeaderSetCmin(tup->t_data, cid);
 	HeapTupleHeaderSetXmax(tup->t_data, 0); /* for cleanliness */
 	tup->t_tableOid = RelationGetRelid(relation);
