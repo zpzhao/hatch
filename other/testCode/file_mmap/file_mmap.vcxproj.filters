@@ -21,10 +21,22 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="F:\01.WorkSpace\10.工作内容\30.uxdb\25.项目需求\02.北京统计局\fdw\ux_migration\tools\compare_tbl\ux_oracle_transform.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\01.WorkSpace\10.工作内容\30.uxdb\25.项目需求\02.北京统计局\fdw\ux_migration\tools\compare_tbl\ux_uxdb_proc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="file_mmap.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\01.WorkSpace\10.工作内容\30.uxdb\25.项目需求\02.北京统计局\fdw\ux_migration\tools\compare_tbl\ux_oracle_transform.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\01.WorkSpace\10.工作内容\30.uxdb\25.项目需求\02.北京统计局\fdw\ux_migration\tools\compare_tbl\ux_uxdb_proc.h">
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
