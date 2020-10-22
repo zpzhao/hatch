@@ -1,2 +1,3 @@
 # java class file ignore
 *.class
+spider/bin/

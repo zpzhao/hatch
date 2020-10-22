@@ -31,14 +31,13 @@ class Spider {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("hello");
+		Thread.currentThread().setName("SpiderMain");
+		System.out.println("hello SpiderMain");
 		
 		byte[] key = "1234567890123456".getBytes();
 		byte[] value = "hello1234567890123456".getBytes(); // new byte[16];
 		byte[] crypt_value;
 		byte[] decrypt_value = new byte[8192];
-		
-		Sm4 hsm4 = new Sm4();
 		
 		System.out.println("origin: ");
 		ShowBytes(value);
@@ -50,6 +49,21 @@ class Spider {
 		decrypt_value = Sm4.decodeSMS4(crypt_value, key);
 		System.out.println("decrypt: ");
 		ShowBytes(decrypt_value);
+		
+		/*
+		 * 最后关闭时处理清除
+		 */
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                try {
+                   //TODO 
+                   System.out.println("程序被关闭");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 	}
 
 }
