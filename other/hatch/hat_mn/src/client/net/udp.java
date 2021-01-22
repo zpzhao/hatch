@@ -65,6 +65,9 @@ public class udp {
 				
 				// send packet data
 				ds.send(dp);
+				
+				DatagramPacket p = new DatagramPacket(new byte[8192],8192);
+				ds.receive(p);
 				// 释放资源
 				ds.close();
 		}catch(UnknownHostException e) {

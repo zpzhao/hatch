@@ -4,8 +4,6 @@
 package client;
 import org.apache.log4j.*;
 
-import client.net.udp;
-
 /**
  * @author zpzhao
  *
@@ -29,10 +27,12 @@ public class client {
 		
 		Thread.currentThread().setName("main");
 		
+
+		
 		RequestDispatch rqdispatch ;
 		//try {
 			//RequestDispatch.isRunning = true;
-		for(int i = 0; i < 8; i++) {
+		for(int i = 0; i < 2; i++) {
 			rqdispatch = new RequestDispatch();
 			rqdispatch.startup();
 		}

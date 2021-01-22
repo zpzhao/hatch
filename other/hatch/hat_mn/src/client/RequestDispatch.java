@@ -3,6 +3,7 @@
  */
 package client;
 
+import client.cpu_test.cpuTestCase;
 import client.net.udp;
 
 /**
@@ -24,10 +25,11 @@ public class RequestDispatch extends Thread{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		udp sock = new udp(port++);
 		while(isRunning) {
 			System.out.println("ThreadID:"+Thread.currentThread().getId()+" ThreadName:"+Thread.currentThread().getName()+" running");
 			
-			udp sock = new udp(port++);
+			new cpuTestCase().TestCaseUtil();
 			sock.test();
 		}
 	}
