@@ -155,7 +155,7 @@
                 "sha256:cee18beb4c807b5c0b178f4fa2fae03cef9d51821a358c6890f8b23465b7e5d2",
                 "sha256:c132bab45d4bd0fff1d3fe294d92b0a6eb8404e93337b3127bdec9f21de117e6"
             ],
-            "version": "==2.3"
+            "version": "==3.2"
         },
         "h11": {
             "hashes": [
